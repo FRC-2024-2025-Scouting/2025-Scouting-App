@@ -1,0 +1,191 @@
+.screen {
+    width: 360px;
+    height: 640px;
+    display: flex;
+    flex-direction: column;
+    border: black solid 2px;
+    align-items: center;
+}
+
+input[type=text] {
+    margin-top: 20px;
+    width: 175px;
+    height: 20px;
+    font-size: medium;
+    outline: none;
+    border: none;
+    border-bottom: solid #555555 1px;
+    transition: 0.1s;
+}
+
+input[type=text]:focus {
+    border: none;
+    border-bottom: 3px solid #555;
+}
+
+.head {
+    text-align: center;
+    font-size: larger;
+    border-bottom: solid black 1px;
+    margin: 0px 10px;
+    margin-bottom: 10px;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+input[type="checkbox"]#red {
+        margin-right: 15px;
+        width: 40px;
+        height: 40px;
+        appearance: none;
+        border: solid #f44336 2px;
+        background-color: white;
+        cursor: pointer;
+}
+
+input[type="checkbox"]#red:checked{
+    background-color: #f44336;
+}
+
+input[type="checkbox"]#blue {
+    margin-left: 15px;
+    width: 40px;
+    height: 40px;
+    appearance: none;
+    border: solid #008CBA 2px;
+    background-color: white;
+    cursor: pointer;
+}
+
+input[type="checkbox"]#blue:checked{
+    background-color: #008CBA;
+}
+
+input[type="checkbox"]#gray {
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    appearance: none;
+    border: solid #555555 2px;
+    background-color: white;
+    cursor: pointer;
+}
+
+input[type="checkbox"]#gray:checked{
+    color: white;
+    background-color: #555555;
+}
+
+input[type="checkbox"]#yellow {
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    appearance: none;
+    border: solid #555555 2px;
+    background-color: white;
+    cursor: pointer;
+}
+
+input[type="checkbox"]#yellow:checked{
+    color: white;
+    background-color: #555555;
+}
+
+/*Home*/
+
+    .homeButton{
+        margin-top: 20px;
+        width: 175px;
+        height: 60px;
+        text-align: center;
+        font-size: large;
+        background-color: rgb(255, 255, 255);
+        border: #555555 solid 1px;
+        transition: 0.3s;
+    }
+
+    .homeButton:hover{
+        background-color:#555555;
+        color: white;
+    }
+
+    .homeButton:active{
+        transition: 0s;
+        color: white;
+        border-color: black;
+        background-color: black;
+    }
+
+/*Auto*/
+    .autoButton{
+        width: 30px;
+        height: 30px;
+        border: solid #555555 1px;
+        border-radius: 10px;
+        background-color: white;
+        margin: 0px 5px;
+        margin-bottom: 10px;
+        text-align: center;
+        font-size: large;
+    }
+
+    .autoButton:hover{
+        background-color: gainsboro;
+    }
+
+    .autoButton:active{
+        background-color: rgb(167, 167, 167);
+    }
+
+    .autoCounter{
+        width: 30px;
+        height: 30px;
+        border: solid #555555 1px;
+        border-radius: 10px;
+        background-color: white;
+        text-align: center;
+    }
+
+    #spacer1{
+        margin-top: 30px;
+    }
+
+    .spacer2{
+        margin-top: 19px;
+    }
+
+
+    /*Temporary?*/
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #scanner {
+        width: 200px;
+        height: 200px;
+        border: black solid 4px;
+    }
+
+    #qrCode {
+        margin-top: 20px;
+        width: 200px;
+        height: 200px;
+        border: black solid 5px;
+    }
+    /*Temporary?*/
+
+    .navBut {
+        width: 50px;
+        height: 50px;
+        margin: 20px 50px;
+    }
