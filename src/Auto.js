@@ -1,4 +1,6 @@
 import { NavButB, NavButN } from "./App";
+import { Tally } from "./Functions";
+import { VlariablesProvider } from "./Functions"
 
 export function AutoPage() {
     return(
@@ -18,40 +20,26 @@ export function AutoPage() {
     );
   }
 
-function Tally(vlair) {
-    const [vlair, setCount] = useState(0)
-
-    const increment = () => setCount(vlair + 1);
-    const deincrement = () => {if (vlair!=0)
-        {setCount(count -1);} };
-    return(
-        <div class="row">
-            <button class="autoButton" onClick={deincrement}> &lt; </button>
-            <div class="autoCounter">{vlair}</div>
-            <buddon class="autoButton" onClick={increment}> &gt; </buddon>
-        </div>
-
-    )
-}
-
 function Score() {
     return(
-        <div class="column">
-            <div class="head">Score</div>
+        <VlariablesProvider>
+            <div class="column">
+                <div class="head">Score</div>
 
-            <Tally
-            vlair={AL1S}
-            />
-            <Tally
-            vlair={AL2S}
-            />
-            <Tally
-            vlair={AL3S}
-            />
-            <Tally
-            vlair={AL4S}
-            />
-        </div>
+                <Tally
+                vlair="AL1S"
+                />
+                <Tally
+                vlair="AL2S"
+                />
+                <Tally
+                vlair="AL3S"
+                />
+                <Tally
+                vlair="AL4S"
+                />
+            </div>
+        </VlariablesProvider>
     );
 }
 
@@ -69,29 +57,24 @@ function Lable() {
 
 function Miss() {
     return(
+        <VlariablesProvider>
         <div class="column">
             <div class="head">Miss</div>
-            <div class="row">
-                <button class="autoButton"> &lt; </button>
-                <div class="autoCounter">0</div>
-                <button class="autoButton"> &gt; </button>
-            </div>
-            <div class="row">
-                <button class="autoButton"> &lt; </button>
-                <div class="autoCounter">0</div>
-                <button class="autoButton"> &gt; </button>
-            </div>
-            <div class="row">
-                <button class="autoButton"> &lt; </button>
-                <div class="autoCounter">0</div>
-                <button class="autoButton"> &gt; </button>
-            </div>
-                <div class="row">
-                <button class="autoButton"> &lt; </button>
-                <div class="autoCounter">0</div>
-                <button class="autoButton"> &gt; </button>
-            </div>
+
+            <Tally
+            vlair="AL1M"
+            />
+            <Tally
+            vlair="AL2M"
+            />
+            <Tally
+            vlair="AL3M"
+            />
+            <Tally
+            vlair="AL4M"
+            />
         </div>
+        </VlariablesProvider>
     );
 }
 
@@ -112,34 +95,32 @@ function Coral() {
 
 function Processor(){
     return(
-        <div>
+        <VlariablesProvider>
             <div class="head">Processor</div>
             <div class="row">
-                <button class="autoButton"> &lt; </button>
-                <div class="autoCounter">0</div>
-                <button class="autoButton"> &gt; </button>
-
-                <button class="autoButton"> &lt; </button>
-                <div class="autoCounter">0</div>
-                <button class="autoButton"> &gt; </button>
+                <Tally
+                vlair="APS"
+                />
+                <Tally
+                vlair="APM"
+                />
             </div>
-        </div>
+        </VlariablesProvider>
     );
 }
 
 function Net(){
     return(
-        <div>
+        <VlariablesProvider>
             <div class="head">Net</div>
             <div class="row">
-                <button class="autoButton"> &lt; </button>
-                <div class="autoCounter">0</div>
-                <button class="autoButton"> &gt; </button>
-
-                <button class="autoButton"> &lt; </button>
-                <div class="autoCounter">0</div>
-                <button class="autoButton"> &gt; </button>
+                <Tally
+                vlair="ANS"
+                />
+                <Tally
+                vlair="ANM"
+                />
             </div>
-        </div>
+        </VlariablesProvider>
     );
 }

@@ -1,5 +1,6 @@
 import './App.css';
-import { BrowserRouter, Routes, Link} from 'react-router-dom';
+import { BrowserRouter, Routes} from 'react-router-dom';
+import { VlariablesProvider } from './Functions.js';
 import { useNavigate } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { HomePage } from './Home.js';
@@ -21,7 +22,7 @@ let routes = ["/", "/Pre", "/Auto", "/Tele", "/End", "/Post", "/Human", "/QR", "
 
 export default function MyApp() {
   return(
-    <body>
+    <VlariablesProvider>
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<HomePage/>} />
@@ -35,7 +36,7 @@ export default function MyApp() {
           <Route path="/QrGen" element={<QrGen/>} />
         </Routes>
       </BrowserRouter>
-    </body>
+    </VlariablesProvider>
   );
 }
 
