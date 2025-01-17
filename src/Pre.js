@@ -1,4 +1,5 @@
 import { NavButB, NavButN } from "./App";
+import { TeamBox } from "./Functions";
 
 export function PrePage() {
     return(
@@ -9,12 +10,12 @@ export function PrePage() {
       <input type="text" id="matchNum" placeholder="Match Number"></input>
       <div class="head">Color</div>
       <div id="spacer">
-        <input type="checkbox" id="red"/>
-        <input type="checkbox" id="blue"/>
+      <TeamBox
+      vlair="colour"/>
       </div>
       <div class="row">
-        <NavButB/>
-        <NavButN/>
+        <NavButB last={0}/>
+        <NavButN next={2}/>
       </div>
     </div>
   </body>

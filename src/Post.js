@@ -1,12 +1,13 @@
 import {FinishBut, NavButB} from './App.js'
+import { CardBox } from './Functions.js';
 
 export function PostPage() {
     return(
         <div class="screen">
             <Cards/>
             <input type="text" id="foul" placeholder="Foul"/>
-            <NavButB/>
-            <FinishBut/>
+            <NavButB last={4}/>
+            <FinishBut next={6}/>
         </div>
     );
 }
@@ -15,17 +16,8 @@ function Cards() {
     return(
         <div>
             <div class="head">Cards</div>
-            <div class="row">
-                <div class="column">
-                    <div class="head">Yellow</div>
-                    <input type="checkbox" id="gray"/>
-                </div>
-
-                <div class="column">
-                    <div class="head">Red</div>
-                    <input type="checkbox" id="gray"/>
-                </div>
-            </div>
+            <CardBox
+            vlair="Cards"/>
         </div>
     );
 }

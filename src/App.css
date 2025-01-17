@@ -89,14 +89,13 @@ input[type="checkbox"]#yellow {
     width: 40px;
     height: 40px;
     appearance: none;
-    border: solid #555555 2px;
+    border: solid #fdf500 2px;
     background-color: white;
     cursor: pointer;
 }
 
 input[type="checkbox"]#yellow:checked{
-    color: white;
-    background-color: #555555;
+    background-color: #fdf500;
 }
 
 /*Home*/

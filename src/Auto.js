@@ -1,6 +1,5 @@
 import { NavButB, NavButN } from "./App";
-import { Tally } from "./Functions";
-import { VlariablesProvider } from "./Functions"
+import { Tally, Checkbox } from "./Functions";
 
 export function AutoPage() {
     return(
@@ -10,10 +9,13 @@ export function AutoPage() {
         <Processor/>
         <Net/>
         <div class="head">Moved?</div>
-        <input type="checkbox" id="gray"/>
+        <Checkbox
+        vlair="moved"
+        style="gray"
+        />
         <div class="row">
-            <NavButB/>
-            <NavButN/>
+            <NavButB last={1}/>
+            <NavButN next={3}/>
         </div>
     </div>
   </body>
@@ -22,24 +24,22 @@ export function AutoPage() {
 
 function Score() {
     return(
-        <VlariablesProvider>
-            <div class="column">
-                <div class="head">Score</div>
+        <div class="column">
+            <div class="head">Score</div>
 
-                <Tally
-                vlair="AL1S"
-                />
-                <Tally
-                vlair="AL2S"
-                />
-                <Tally
-                vlair="AL3S"
-                />
-                <Tally
-                vlair="AL4S"
-                />
-            </div>
-        </VlariablesProvider>
+            <Tally
+            vlair="AL1S"
+            />
+            <Tally
+            vlair="AL2S"
+            />
+            <Tally
+            vlair="AL3S"
+            />
+            <Tally
+            vlair="AL4S"
+            />
+        </div>
     );
 }
 
@@ -57,7 +57,6 @@ function Lable() {
 
 function Miss() {
     return(
-        <VlariablesProvider>
         <div class="column">
             <div class="head">Miss</div>
 
@@ -74,7 +73,6 @@ function Miss() {
             vlair="AL4M"
             />
         </div>
-        </VlariablesProvider>
     );
 }
 
@@ -95,7 +93,7 @@ function Coral() {
 
 function Processor(){
     return(
-        <VlariablesProvider>
+        <div>
             <div class="head">Processor</div>
             <div class="row">
                 <Tally
@@ -105,13 +103,13 @@ function Processor(){
                 vlair="APM"
                 />
             </div>
-        </VlariablesProvider>
+        </div>
     );
 }
 
 function Net(){
     return(
-        <VlariablesProvider>
+        <div>
             <div class="head">Net</div>
             <div class="row">
                 <Tally
@@ -121,6 +119,6 @@ function Net(){
                 vlair="ANM"
                 />
             </div>
-        </VlariablesProvider>
+        </div>
     );
 }

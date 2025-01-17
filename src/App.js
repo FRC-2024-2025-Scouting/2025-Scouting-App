@@ -1,6 +1,5 @@
 import './App.css';
 import { BrowserRouter, Routes} from 'react-router-dom';
-import { VlariablesProvider } from './Functions.js';
 import { useNavigate } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { HomePage } from './Home.js';
@@ -12,9 +11,9 @@ import { PostPage } from './Post.js';
 import { HumanPage } from './Human.js';
 import { QRPage } from './QR.js';
 import { QrGen } from './QRGen.js';
+import { vlairiables } from './Functions.js';
 
-let currPage = 0;
-let prevPage = 0;
+let human = false;
 let routes = ["/", "/Pre", "/Auto", "/Tele", "/End", "/Post", "/Human", "/QR", "/QrGen"];
 {/*
 
@@ -22,7 +21,7 @@ let routes = ["/", "/Pre", "/Auto", "/Tele", "/End", "/Post", "/Human", "/QR", "
 
 export default function MyApp() {
   return(
-    <VlariablesProvider>
+    <body>
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<HomePage/>} />
@@ -36,7 +35,7 @@ export default function MyApp() {
           <Route path="/QrGen" element={<QrGen/>} />
         </Routes>
       </BrowserRouter>
-    </VlariablesProvider>
+    </body>
   );
 }
 
@@ -46,7 +45,6 @@ export function StartScoutBut() {
   const navigate = useNavigate(); 
   const handleClick = () => {
     navigate('/Pre');
-    currPage = 1;
   };
 
   return (
@@ -60,7 +58,6 @@ export function QRBut() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    currPage = 7;
     navigate('/QR')
   };
 
@@ -75,7 +72,7 @@ export function  HumanBut() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    currPage = 6;
+    human = true;
     navigate('/Human')
   };
 
@@ -87,12 +84,11 @@ export function  HumanBut() {
 }
 
 {/*Multi page Buttons*/}
-export function NavButN() {
+export function NavButN({next}) {
   const navigate = useNavigate()
   const nextPage = () => {
-    currPage++;
-    console.log(currPage)
-    const go = routes[currPage]
+    console.log(vlairiables);
+    const go = routes[next]
     navigate(go)
   }
 
@@ -104,20 +100,17 @@ export function NavButN() {
 }
 
 
-export function NavButB() {
+export function NavButB({last}) {
   const navigate = useNavigate()
   const lastPage = () => {
-    if (prevPage != 0) {
-      const go = routes[prevPage]
-      navigate(go)
-      prevPage = 0;
-    } else{
-      currPage--;
-      console.log(currPage)
-      const go = routes[currPage]
+    if (human){
+      navigate("/")
+      human = false;
+    } else {
+      console.log(vlairiables);
+      const go = routes[last]
       navigate(go)  
     }
-
   }
 
   return(
@@ -130,7 +123,8 @@ export function NavButB() {
 export function HomePageBut() {
   const navigate = useNavigate()
   const homePage = () => {
-    currPage = 0;
+    console.log(vlairiables);
+    human = false;
     navigate('/')
   }
 
@@ -144,7 +138,7 @@ export function HomePageBut() {
 export function FinishBut() {
   const navigate = useNavigate()
   const finishPage = () => {
-    prevPage = currPage;
+    human = false;
     navigate('/QrGen')
   }
   return(

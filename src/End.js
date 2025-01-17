@@ -1,15 +1,18 @@
 import { NavButB, NavButN } from "./App";
+import { Tally, Checkbox } from "./Functions";
 
 export function EndPage() {
     return(
         <div class="screen">
             <div class="head">Park</div>
-            <input type="checkbox" id="gray"/>
+            <Checkbox
+            vlair="PRK"
+            style="gray"/>
             <Shallow/>
             <Deep/>
             <div class="row">
-                <NavButB/>
-                <NavButN/>
+                <NavButB last={3}/>
+                <NavButN next={5}/>
             </div>
         </div>
     ); 
@@ -21,25 +24,14 @@ function Shallow() {
             <div class="head">Shallow</div>
                 <div class="row">
                     <div class="column">
-                    <div class="head">Climb</div>
-                    
-                    <div class="row">
-                        <button class="autoButton"> &lt; </button>
-                        <div class="autoCounter">0</div>
-                        <button class="autoButton"> &gt; </button>
-                    </div>
-            
+                        <div class="head">Climb</div>
+                        <Tally vlair="SCC"/>
                     </div>
                     
                     <div class="column">
-                    <div class="head">Fall</div>
-            
-                    <div class="row">
-                        <button class="autoButton"> &lt; </button>
-                        <div class="autoCounter">0</div>
-                        <button class="autoButton"> &gt; </button>
-                    </div>
-            
+                        <div class="head">Fall</div>
+                
+                        <Tally vlair="SCF"/>
                     </div>
 
 
@@ -54,19 +46,11 @@ function Deep() {
             <div class="head">Deep</div>
                 <div class="row">
                     <div class="column">
-                        <div class="row">
-                        <button class="autoButton"> &lt; </button>
-                        <div class="autoCounter">0</div>
-                        <button class="autoButton"> &gt; </button>
-                        </div>
+                        <Tally vlair="DCC"/>
                     </div>
 
                     <div class="column">
-                        <div class="row">
-                        <button class="autoButton"> &lt; </button>
-                        <div class="autoCounter">0</div>
-                        <button class="autoButton"> &gt; </button>
-                        </div>
+                        <Tally vlair="DCF"/>
                     </div>
                 </div>
         </div>

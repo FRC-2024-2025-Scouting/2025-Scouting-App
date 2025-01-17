@@ -1,13 +1,10 @@
-import { createContext, useState, useContext } from 'react';
+import { useState } from 'react';
 
-const VlairiablesContext = createContext();
-
-export const VlariablesProvider = ({children}) => {
-    const [vlairiables, setVlairiables] = useState({
-        // Pregame
+export const vlairiables = {
+    // Pregame
     matchNum: 0,  //#
     teamNum: 0,   //#
-    colour: 0,    //#-restricted
+    colour: false,    //Bool false for red true for blue
 
     // Auto
     moved: false,  // Assuming it's a boolean
@@ -56,42 +53,133 @@ export const VlariablesProvider = ({children}) => {
     DCC: 0,        //# Deep Cage Climb
     DCF: 0,        //# Deep Cage Climb
 
-    Cards: 0,      //#-restricted
+    Cards: null,      //bool
     Fouls: 0,      //#
-    });
-    return(
-        <VlairiablesContext.Provider value={{ vlairiables, setVlairiables}}>
-            {children}
-        </VlairiablesContext.Provider>
-    )
-}
+};
 
 export function Tally({ vlair }) {
-    const { vlairiables, setVlairiables } = useContext(VlairiablesContext);
-
-    const [count, setCount] = useState(vlairiables[vlair]);
+    const [count, setCount] = useState(Number(vlairiables[vlair])); 
 
     const increment = () => {
-        setVlairiables((prevState) => ({
-            ...prevState,
-            [vlair]: prevState[vlair] + 1,
-        }));
+        const newCount = count + 1;
+        setCount(newCount);
+        vlairiables[vlair] = newCount;
+        console.log(vlairiables);
     };
 
+    // Decrement function
     const deincrement = () => {
-        if (vlairiables[vlair] > 0) {
-            setVlairiables((prevState) => ({
-                ...prevState,
-                [vlair]: prevState[vlair] - 1,
-            }));
+        if (count > 0) {
+            const newCount = count - 1;
+            setCount(newCount);
+            vlairiables[vlair] = newCount;
+            console.log(vlairiables);
         }
     };
-
     return (
         <div className="row">
             <button className="autoButton" onClick={deincrement}> &lt; </button>
-            <div className="autoCounter">{vlairiables[vlair]}</div>
+            <div className="autoCounter">{count}</div>
             <button className="autoButton" onClick={increment}> &gt; </button>
+        </div>
+    );
+};
+
+export function Checkbox({ vlair, style }) {
+    const [checked, setChecked] = useState(vlairiables[vlair] || false);
+
+    const togIt = () => {
+        setChecked(prevChecked => !prevChecked);
+        vlairiables[vlair] = !checked;
+        console.log(vlairiables);
+    };
+
+    return (
+        <input
+            type="checkbox"
+            id={style}
+            onChange={togIt}
+            checked={checked}
+        />
+    );
+}
+
+export function TeamBox({ vlair }) {
+    const [checked, setChecked] = useState(vlairiables[vlair] || false);
+
+    const toggleCheckbox = () => {
+        setChecked(prevChecked => !prevChecked);
+        vlairiables[vlair] = !checked;
+        console.log(vlairiables);
+    };
+
+    return (
+        <div>
+            <input
+                type="checkbox"
+                id="red"
+                onChange={toggleCheckbox}
+                checked={checked}
+            />
+            <input
+                type="checkbox"
+                id="blue"
+                onChange={toggleCheckbox}
+                checked={!checked}
+            />
+        </div>
+    );
+}
+
+export function CardBox({vlair}) {
+    const [checked1, setChecked1] = useState(vlairiables[vlair] === null ? false : vlairiables[vlair]);
+    const [checked2, setChecked2] = useState(vlairiables[vlair] === null ? false : vlairiables[vlair]);
+
+    const updateState = () => {
+        if (checked1 === false && checked2 === false) {
+            vlairiables[vlair] = null;
+        } else if (checked1 === false && checked2 === true) {
+            vlairiables[vlair] = false;
+        } else {
+            vlairiables[vlair] = true;
+        }
+
+        console.log(vlairiables)
+    };
+
+    const handleCheckbox1Change = () => {
+        setChecked1(prevChecked => {
+            const newChecked1 = !prevChecked;
+            setChecked2(newChecked1 ? false : checked2);
+            updateState();
+            return newChecked1;
+        });
+    };
+
+    const handleCheckbox2Change = () => {
+        setChecked2(prevChecked => {
+            const newChecked2 = !prevChecked;
+            setChecked1(newChecked2 ? true : checked1);
+            updateState();
+            return newChecked2;
+        });
+    };
+
+    return (
+        <div class="row">
+            <input
+                type="checkbox"
+                id="yellow"
+                onChange={handleCheckbox1Change}
+                checked={checked1}
+            />
+
+            <input
+                type="checkbox"
+                id="red"
+                onChange={handleCheckbox2Change}
+                checked={checked2}
+            />
         </div>
     );
 }
