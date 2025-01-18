@@ -1,66 +1,50 @@
 import { useState, useEffect } from 'react';
+import { HomePageBut } from "./App";
 
-export const vlairiables = {
-    // Pregame
-    scoutName: "", //Text
-    matchNum: "",  //Text
-    teamNum: "",   //Text
-    colour: false,    //Bool false for red true for blue
-
-    // Auto
-    moved: false,  // Assuming it's a boolean
-    AL1S: 0,       //# Layer 1 score
-    AL2S: 0,       //# Layer 2 score
-    AL3S: 0,       //# Layer 3 score
-    AL4S: 0,       //# Layer 4 score
-
-    AL1M: 0,       //# Layer 1 Miss
-    AL2M: 0,       //# Layer 2 Miss
-    AL3M: 0,       //# Layer 3 Miss
-    AL4M: 0,       //# Layer 4 Miss
-
-    APS: 0,        //# Processor Score
-    APM: 0,        //# Processor Miss
-
-    ANS: 0,        //# Net Score
-    ANM: 0,        //# Net Miss
-
-    // Tele
-    TL1S: 0,       //# Layer 1 score
-    TL2S: 0,       //# Layer 2 score
-    TL3S: 0,       //# Layer 3 score
-    TL4S: 0,       //# Layer 4 score
-
-    TL1M: 0,       //# Layer 1 Miss
-    TL2M: 0,       //# Layer 2 Miss
-    TL3M: 0,       //# Layer 3 Miss
-    TL4M: 0,       //# Layer 4 Miss
-
-    TPS: 0,        //# Processor Score
-    TPM: 0,        //# Processor Miss
-
-    TNS: 0,        //# Net Score
-    TNM: 0,        //# Net Miss
-
-    BRKDN: 0,      //# Breakdowns
-    RCVR: 0,       //# Recoveries
-
-    // End
-    PRK: false,    // Bool Pooked
-
-    SCC: 0,        //# Shallow Cage Climb
-    SCF: 0,        //# Shallow Cage Fall
-
-    DCC: 0,        //# Deep Cage Climb
-    DCF: 0,        //# Deep Cage Climb
-
-    Cards: 0,      //#
-    Fouls: 0,      //#
-
-    // Human
-    HMNS: 0,       //# Human Score
-    HMNM: 0,       //# Human Miss
+const initialVlairiables = {
+    scoutName: "", 
+    matchNum: "",  
+    teamNum: "",   
+    colour: false,    
+    moved: false,  
+    AL1S: 0,       
+    AL2S: 0,       
+    AL3S: 0,       
+    AL4S: 0,       
+    AL1M: 0,       
+    AL2M: 0,       
+    AL3M: 0,       
+    AL4M: 0,       
+    APS: 0,        
+    APM: 0,        
+    ANS: 0,        
+    ANM: 0,        
+    TL1S: 0,       
+    TL2S: 0,       
+    TL3S: 0,       
+    TL4S: 0,       
+    TL1M: 0,       
+    TL2M: 0,       
+    TL3M: 0,       
+    TL4M: 0,       
+    TPS: 0,        
+    TPM: 0,        
+    TNS: 0,        
+    TNM: 0,        
+    BRKDN: 0,      
+    RCVR: 0,       
+    PRK: false,    
+    SCC: 0,        
+    SCF: 0,        
+    DCC: 0,        
+    DCF: 0,        
+    Cards: 0,      
+    Fouls: 0,      
+    HMNS: 0,       
+    HMNM: 0,       
 };
+
+export const vlairiables = { ...initialVlairiables };
 
 export function Tally({ vlair }) {
     const [count, setCount] = useState(Number(vlairiables[vlair])); 
@@ -211,3 +195,29 @@ export function TextBox({ vlair, tooltip }) {
         </div>
     );
 };
+
+export function resetVlairiables ()  {
+    Object.assign(vlairiables, { ...initialVlairiables });
+    console.log('Vlairiables have been reset:', vlairiables);
+};
+
+export function OutputVar() {
+    const [text, setText] = useState("");
+
+    const printVar = () => {
+        const newText = JSON.stringify(vlairiables, null, 2);
+        setText(newText);
+    };
+
+    return (
+        <div class="screen">
+            <div id="qrCode">
+                <pre>{text}</pre>
+            </div>
+            <div className="homeButton" onClick={printVar}>
+                Generate QR
+            </div>
+            <HomePageBut/>
+        </div>
+    );
+}

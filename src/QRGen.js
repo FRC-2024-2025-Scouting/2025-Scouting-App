@@ -1,15 +1,7 @@
-import { HomePageBut, NavButB } from "./App";
+import { OutputVar } from "./Functions"
 
 export function QrGen() {
     return(
-        <div class="screen">
-            <div id="qrCode">
-                Code Here
-            </div>
-            <div class="homeButton">
-                Generate QR
-            </div>
-            <HomePageBut/>
-        </div>
+        <OutputVar/>
     );
 }

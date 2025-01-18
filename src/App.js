@@ -11,7 +11,7 @@ import { PostPage } from './Post.js';
 import { HumanPage } from './Human.js';
 import { QRPage } from './QR.js';
 import { QrGen } from './QRGen.js';
-import { vlairiables } from './Functions.js';
+import { vlairiables, resetVlairiables } from './Functions.js';
 
 let human = false;
 let routes = ["/", "/Pre", "/Auto", "/Tele", "/End", "/Post", "/Human", "/QR", "/QrGen"];
@@ -126,6 +126,7 @@ export function HomePageBut() {
     console.log(vlairiables);
     human = false;
     navigate('/')
+    resetVlairiables();
   }
 
   return(
