@@ -1,4 +1,5 @@
-import { FinishBut,HomePageBut } from "./App";
+import { FinishBut, HomePageBut } from "./App";
+import { Tally, TextBox } from "./Functions";
 
 export function HumanPage() {
     return(
@@ -14,9 +15,18 @@ export function HumanPage() {
 function ID() {
     return(
         <div class="column">
-            <input type="text" id="name" placeholder="Name"></input>
-            <input type="text" id="teamNum" placeholder="Team Number"></input>
-            <input type="text" id="matchNum" placeholder="Match Number"></input>
+            <TextBox
+            vlair="scoutName"
+            tooltip="Name"
+            />
+            <TextBox
+            vlair="teamNum"
+            tooltip="Team Number"
+            />
+            <TextBox
+            vlair="matchNum"
+            tooltip="Match Number"
+            />
         </div>
     );
 }
@@ -24,25 +34,23 @@ function ID() {
 function Net() {
     return(
     <div>
-        <div class="head">Net</div>
+        <div class="head">Miss &nbsp;&nbsp; Net &nbsp;&nbsp; Score</div>
       
         <div class="row">
             <div class="column">
-                <div class="head">Score</div>
                 <div class="row">
-                    <button class="autoButton"> &lt; </button>
-                    <div class="autoCounter">0</div>
-                    <button class="autoButton"> &gt; </button>
+                    <Tally
+                    vlair="HMNS"
+                    />
                 </div>
             </div>
         
             <div class="column">
-                <div class="head">Miss</div>
 
                 <div class="row">
-                    <button class="autoButton"> &lt; </button>
-                    <div class="autoCounter">0</div>
-                    <button class="autoButton"> &gt; </button>
+                    <Tally
+                    vlair="HMNM"
+                    />
                 </div>
             </div>
         </div>

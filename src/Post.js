@@ -1,11 +1,14 @@
 import {FinishBut, NavButB} from './App.js'
-import { CardBox } from './Functions.js';
+import { CardBox, TextBox } from './Functions.js';
 
 export function PostPage() {
     return(
         <div class="screen">
             <Cards/>
-            <input type="text" id="foul" placeholder="Foul"/>
+            <TextBox
+            vlair="foul"
+            tooltip="Fouls"
+            />
             <NavButB last={4}/>
             <FinishBut next={6}/>
         </div>

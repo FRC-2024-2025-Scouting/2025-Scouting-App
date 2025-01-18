@@ -1,13 +1,22 @@
 import { NavButB, NavButN } from "./App";
-import { TeamBox } from "./Functions";
+import { TeamBox, TextBox } from "./Functions";
 
 export function PrePage() {
     return(
   <body>
     <div class="screen">
-      <input type="text" id="name" placeholder="Name"></input>
-      <input type="text" id="teamNum" placeholder="Team Number"></input>
-      <input type="text" id="matchNum" placeholder="Match Number"></input>
+      <TextBox
+      vlair="scoutName"
+      tooltip="Name"
+      />
+      <TextBox
+      vlair="teamNum"
+      tooltip="Team Number"
+      />
+      <TextBox
+      vlair="matchNum"
+      tooltip="Match Number"
+      />
       <div class="head">Color</div>
       <div id="spacer">
       <TeamBox

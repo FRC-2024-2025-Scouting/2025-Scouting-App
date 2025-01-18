@@ -25,7 +25,6 @@ export function AutoPage() {
 function Score() {
     return(
         <div class="column">
-            <div class="head">Score</div>
 
             <Tally
             vlair="AL1S"
@@ -46,7 +45,6 @@ function Score() {
 function Lable() {
     return(
         <div class="column">
-            <div id="spacer1"></div>
             <div class="spacer2">l1</div>
             <div class="spacer2">l2</div>
             <div class="spacer2">l3</div>
@@ -58,7 +56,6 @@ function Lable() {
 function Miss() {
     return(
         <div class="column">
-            <div class="head">Miss</div>
 
             <Tally
             vlair="AL1M"
@@ -79,7 +76,7 @@ function Miss() {
 function Coral() {
     return(
         <div>
-            <div class="head">Coral</div>
+            <div class="head">Miss &nbsp;&nbsp;&nbsp;&nbsp; Coral &nbsp;&nbsp;&nbsp;&nbsp; Score</div>
 
             <div class="row">
                 <Score/>
@@ -94,11 +91,12 @@ function Coral() {
 function Processor(){
     return(
         <div>
-            <div class="head">Processor</div>
+            <div class="head">Miss &nbsp;Processor&nbsp; Score</div>
             <div class="row">
                 <Tally
                 vlair="APS"
                 />
+                <div class="spacer2"/>
                 <Tally
                 vlair="APM"
                 />
@@ -110,11 +108,12 @@ function Processor(){
 function Net(){
     return(
         <div>
-            <div class="head">Net</div>
+            <div class="head">Miss &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Net &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Score</div>
             <div class="row">
                 <Tally
                 vlair="ANS"
                 />
+                <div class="spacer2"/>
                 <Tally
                 vlair="ANM"
                 />

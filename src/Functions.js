@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const vlairiables = {
     // Pregame
-    matchNum: 0,  //#
-    teamNum: 0,   //#
+    scoutName: "", //Text
+    matchNum: "",  //Text
+    teamNum: "",   //Text
     colour: false,    //Bool false for red true for blue
 
     // Auto
@@ -53,8 +54,12 @@ export const vlairiables = {
     DCC: 0,        //# Deep Cage Climb
     DCF: 0,        //# Deep Cage Climb
 
-    Cards: null,      //bool
+    Cards: 0,      //#
     Fouls: 0,      //#
+
+    // Human
+    HMNS: 0,       //# Human Score
+    HMNM: 0,       //# Human Miss
 };
 
 export function Tally({ vlair }) {
@@ -131,27 +136,26 @@ export function TeamBox({ vlair }) {
     );
 }
 
-export function CardBox({vlair}) {
-    const [checked1, setChecked1] = useState(vlairiables[vlair] === null ? false : vlairiables[vlair]);
-    const [checked2, setChecked2] = useState(vlairiables[vlair] === null ? false : vlairiables[vlair]);
+export function CardBox({ vlair }) {
+    const [count, setCount] = useState(Number(vlairiables[vlair])); 
+    const [checked1, setChecked1] = useState(false);
+    const [checked2, setChecked2] = useState(false);
 
-    const updateState = () => {
-        if (checked1 === false && checked2 === false) {
-            vlairiables[vlair] = null;
-        } else if (checked1 === false && checked2 === true) {
-            vlairiables[vlair] = false;
-        } else {
-            vlairiables[vlair] = true;
+    const updateVlare = () => {
+        let newCount = 0;
+        if (checked1 && checked2) {
+            newCount = 2;
+        } else if (checked1 || checked2) {
+            newCount = 1;
         }
-
-        console.log(vlairiables)
+        setCount(newCount);
+        vlairiables[vlair] = newCount;
+        console.log(vlairiables);
     };
 
     const handleCheckbox1Change = () => {
         setChecked1(prevChecked => {
             const newChecked1 = !prevChecked;
-            setChecked2(newChecked1 ? false : checked2);
-            updateState();
             return newChecked1;
         });
     };
@@ -159,21 +163,22 @@ export function CardBox({vlair}) {
     const handleCheckbox2Change = () => {
         setChecked2(prevChecked => {
             const newChecked2 = !prevChecked;
-            setChecked1(newChecked2 ? true : checked1);
-            updateState();
             return newChecked2;
         });
     };
 
+    useEffect(() => {
+        updateVlare();
+    }, [checked1, checked2]);
+
     return (
-        <div class="row">
+        <div className="row">
             <input
                 type="checkbox"
                 id="yellow"
                 onChange={handleCheckbox1Change}
                 checked={checked1}
             />
-
             <input
                 type="checkbox"
                 id="red"
@@ -183,3 +188,26 @@ export function CardBox({vlair}) {
         </div>
     );
 }
+
+export function TextBox({ vlair, tooltip }) {
+    const [text, setText] = useState(vlairiables[vlair] || ''); 
+
+    const handleChange = (event) => {
+        const newText = event.target.value;
+        setText(newText);
+        vlairiables[vlair] = newText;
+        console.log(vlairiables);
+    };
+
+    return (
+        <div className="row">
+            <input
+                type="text"
+                placeholder={tooltip}
+                className="autoInput"
+                value={text}
+                onChange={handleChange}
+            />
+        </div>
+    );
+};

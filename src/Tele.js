@@ -10,6 +10,7 @@ export function TelePage() {
         <Net/>
         <div class="row">
           <Breakdown/>
+          <div class="spacer2"/>
           <Recovery/>
         </div>
         <div class="row">
@@ -23,7 +24,7 @@ export function TelePage() {
 function Coral() {
     return(
         <div>
-            <div class="head">Coral</div>
+            <div class="head">Miss &nbsp;&nbsp;&nbsp;&nbsp; Coral &nbsp;&nbsp;&nbsp;&nbsp; Score</div>
             <div class="row">
                 <Score/>
                 <Label/>
@@ -37,7 +38,6 @@ function Coral() {
 function Score() {
     return(
         <div class="column">
-            <div class="head">Score</div>
   
             <Tally 
             vlair="TL1S"
@@ -58,7 +58,6 @@ function Score() {
 function Label() {
     return(
         <div class="column">
-            <div id="spacer1"></div>
             <div class="spacer2">l1</div>
             <div class="spacer2">l2</div>
             <div class="spacer2">l3</div>
@@ -70,7 +69,6 @@ function Label() {
 function Miss() {
     return(
       <div class="column">
-        <div class="head">Miss</div>
         <Tally 
             vlair="TL1M"
             />
@@ -90,9 +88,10 @@ function Miss() {
 function Processor() {
     return(
         <div>
-            <div class="head">Processor</div>
+            <div class="head">Miss &nbsp;Processor&nbsp; Score</div>
             <div class="row">
                 <Tally vlair="TPS"/>
+                <div class="spacer2"/>
                 <Tally vlair="TPM"/>
             </div>
         </div>
@@ -102,9 +101,10 @@ function Processor() {
 function Net() {
     return(
         <div>
-            <div class="head">Net</div>
+            <div class="head">Miss &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Net &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Score</div>
             <div class="row">
                 <Tally vlair="TNS"/>
+                <div class="spacer2"/>
                 <Tally vlair="TNM"/>
             </div>
         </div>

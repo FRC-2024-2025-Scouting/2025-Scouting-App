@@ -21,20 +21,11 @@ export function EndPage() {
 function Shallow() {
     return(
         <div>
-            <div class="head">Shallow</div>
+            <div class="head">Climb &nbsp;&nbsp;&nbsp;Shallow &nbsp;&nbsp;&nbsp;Fall</div>
                 <div class="row">
-                    <div class="column">
-                        <div class="head">Climb</div>
                         <Tally vlair="SCC"/>
-                    </div>
-                    
-                    <div class="column">
-                        <div class="head">Fall</div>
-                
+                        <div class="spacer2"/>
                         <Tally vlair="SCF"/>
-                    </div>
-
-
                 </div>
         </div>
     );
@@ -43,15 +34,11 @@ function Shallow() {
 function Deep() {
     return(
         <div>
-            <div class="head">Deep</div>
+            <div class="head">Climb &nbsp;&nbsp;&nbsp;&nbsp;Deep &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fall</div>
                 <div class="row">
-                    <div class="column">
                         <Tally vlair="DCC"/>
-                    </div>
-
-                    <div class="column">
+                        <div class="spacer2"/>
                         <Tally vlair="DCF"/>
-                    </div>
                 </div>
         </div>
     );

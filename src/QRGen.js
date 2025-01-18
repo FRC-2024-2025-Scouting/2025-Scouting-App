@@ -6,7 +6,6 @@ export function QrGen() {
             <div id="qrCode">
                 Code Here
             </div>
-            <NavButB/>
             <div class="homeButton">
                 Generate QR
             </div>
