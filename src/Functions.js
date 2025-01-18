@@ -201,6 +201,33 @@ export function resetVlairiables ()  {
     console.log('Vlairiables have been reset:', vlairiables);
 };
 
+export function convertToCsv(data) {
+    // Extract the values and handle booleans (convert true to 1, false to 0) and strings normally
+    const values = Object.values(data).map(value => {
+        if (typeof value === 'boolean') {
+            return value ? 'true' : 'false'; // Keep booleans as 'true' or 'false'
+        } else if (typeof value === 'string') {
+            return `"${value}"`; // Keep strings as is (with quotes for CSV safety)
+        }
+        return value; // For numbers, return as they are
+    });
+
+    // Create the CSV content with values only, no headers
+    let csvContent = "data:text/csv;charset=utf-8,";
+
+    // Add values to the CSV string, separated by commas
+    csvContent += values.join(",") + "\n";
+
+    // Encode URI and trigger a download
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "vlairiables.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
 export function OutputVar() {
     const [text, setText] = useState("");
 
@@ -209,14 +236,25 @@ export function OutputVar() {
         setText(newText);
     };
 
+    const resetVlairiables = () => {
+        Object.assign(vlairiables, { ...initialVlairiables });
+        console.log('Vlairiables have been reset:', vlairiables);
+    };
+
     return (
         <div class="screen">
             <div id="qrCode">
                 <pre>{text}</pre>
             </div>
-            <div className="homeButton" onClick={printVar}>
+            <button className="homeButton" onClick={printVar}>
                 Generate QR
-            </div>
+            </button>
+            <button className="homeButton" onClick={resetVlairiables}>
+                Reset Vlairiables
+            </button>
+            <button className="homeButton" onClick={() => convertToCsv(vlairiables)}>
+                Download CSV
+            </button>
             <HomePageBut/>
         </div>
     );
