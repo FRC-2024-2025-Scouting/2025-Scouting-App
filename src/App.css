@@ -170,15 +170,15 @@ input[type="checkbox"]#yellow:checked{
     }
 
     #scanner {
-        width: 200px;
-        height: 200px;
+        width: fit-content;
+        height: fit-content;
         border: black solid 4px;
     }
 
     #qrCode {
         margin-top: 20px;
-        width: 200px;
-        height: 200px;
+        width: 255px;
+        height: 255px;
         border: black solid 5px;
     }
     /*Temporary?*/

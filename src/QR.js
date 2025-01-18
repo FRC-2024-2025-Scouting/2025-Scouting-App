@@ -1,4 +1,5 @@
 import { HomePageBut } from "./App";
+import { Scanner } from '@yudiel/react-qr-scanner';
 
 export function QRPage() {
     return(
@@ -13,7 +14,10 @@ export function QRPage() {
 function TempIcon() {
     return(
         <div class="center">
-            <div id="scanner">Camera Here</div>
+            <Scanner 
+            onScan={(result) => console.log(result)} 
+            //Add styling
+            />
         </div>
     );
 }   

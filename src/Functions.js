@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { HomePageBut } from "./App";
+import {QRCodeSVG} from 'qrcode.react';
 
 const initialVlairiables = {
     scoutName: "", 
@@ -201,6 +202,7 @@ export function resetVlairiables ()  {
     console.log('Vlairiables have been reset:', vlairiables);
 };
 
+// Function to convert data to CSV string
 export function convertToCsv(data) {
     // Extract the values and handle booleans (convert true to 1, false to 0) and strings normally
     const values = Object.values(data).map(value => {
@@ -213,27 +215,17 @@ export function convertToCsv(data) {
     });
 
     // Create the CSV content with values only, no headers
-    let csvContent = "data:text/csv;charset=utf-8,";
-
-    // Add values to the CSV string, separated by commas
-    csvContent += values.join(",") + "\n";
-
-    // Encode URI and trigger a download
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "vlairiables.csv");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    return values.join(",") + "\n";
 }
 
 export function OutputVar() {
-    const [text, setText] = useState("");
+    const [qrCodeData, setQrCodeData] = useState(""); // State to store the QR code data
 
     const printVar = () => {
         const newText = JSON.stringify(vlairiables, null, 2);
-        setText(newText);
+        const csvContent = convertToCsv(vlairiables);
+        setQrCodeData(csvContent); // Set QR code data
+        resetVlairiables()
     };
 
     const resetVlairiables = () => {
@@ -242,20 +234,18 @@ export function OutputVar() {
     };
 
     return (
-        <div class="screen">
+        <div className="screen">
             <div id="qrCode">
-                <pre>{text}</pre>
+                {qrCodeData && (
+                    <div>
+                        <QRCodeSVG value={qrCodeData} size={256} />
+                    </div>
+                )}
             </div>
             <button className="homeButton" onClick={printVar}>
                 Generate QR
             </button>
-            <button className="homeButton" onClick={resetVlairiables}>
-                Reset Vlairiables
-            </button>
-            <button className="homeButton" onClick={() => convertToCsv(vlairiables)}>
-                Download CSV
-            </button>
-            <HomePageBut/>
+            <HomePageBut />
         </div>
     );
 }
