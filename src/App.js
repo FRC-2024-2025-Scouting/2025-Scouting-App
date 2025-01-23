@@ -1,7 +1,9 @@
+//Important imports for the app
 import './App.css';
 import { BrowserRouter, Routes} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Route } from 'react-router-dom';
+//Pages 
 import { HomePage } from './Home.js';
 import { PrePage } from './Pre.js';
 import { AutoPage } from './Auto.js';
@@ -12,13 +14,14 @@ import { HumanPage } from './Human.js';
 import { QRPage } from './QR.js';
 import { QrGen } from './QRGen.js';
 import { vlairiables, resetVlairiables } from './Functions.js';
-
+//Variables for page navigation purposes
 let human = false;
 let routes = ["/", "/Pre", "/Auto", "/Tele", "/End", "/Post", "/Human", "/QR", "/QrGen"];
 {/*
 
  */}
-
+ //these quotes above crash my pc if they arent included 
+//Main app page with all the pages routed in
 export default function MyApp() {
   return(
     <body>
@@ -54,6 +57,7 @@ export function StartScoutBut() {
   );
 }
 
+//QR Scanning button
 export function QRBut() {
   const navigate = useNavigate();
 
@@ -68,6 +72,7 @@ export function QRBut() {
   );
 }
 
+//Button to navigate to the human scouting page
 export function  HumanBut() {
   const navigate = useNavigate();
 
@@ -88,7 +93,7 @@ export function NavButN({next}) {
   const navigate = useNavigate()
   const nextPage = () => {
     console.log(vlairiables);
-    const go = routes[next]
+    const go = routes[next] //Prop dictated when button is called to decide which page to go to next
     navigate(go)
   }
 
@@ -108,7 +113,7 @@ export function NavButB({last}) {
       human = false;
     } else {
       console.log(vlairiables);
-      const go = routes[last]
+      const go = routes[last] //Prop dictated when button is called to decide which page to go back to
       navigate(go)  
     }
   }
@@ -120,6 +125,7 @@ export function NavButB({last}) {
   );
 }
 
+//Button to navigate to the home page
 export function HomePageBut() {
   const navigate = useNavigate()
   const homePage = () => {
@@ -136,6 +142,7 @@ export function HomePageBut() {
   );
 }
 
+//Button to generate the qr codes
 export function FinishBut() {
   const navigate = useNavigate()
   const finishPage = () => {

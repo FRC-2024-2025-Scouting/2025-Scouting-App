@@ -1,6 +1,8 @@
 import { NavButB, NavButN } from "./App";
 import { Tally, Checkbox } from "./Functions";
 
+//Main page path
+//All elements with props are dictated on thier main page
 export function AutoPage() {
     return(
   <body>
@@ -22,6 +24,7 @@ export function AutoPage() {
     );
   }
 
+// The element to keep track of the score
 function Score() {
     return(
         <div class="column">
@@ -42,6 +45,7 @@ function Score() {
     );
 }
 
+// Lable for visual purposes
 function Lable() {
     return(
         <div class="column">
@@ -53,6 +57,7 @@ function Lable() {
     );
 }
 
+//The element to keep track of misses
 function Miss() {
     return(
         <div class="column">
@@ -73,6 +78,7 @@ function Miss() {
     );
 }
 
+//Organising element
 function Coral() {
     return(
         <div>
@@ -87,7 +93,7 @@ function Coral() {
     );
 }
 
-
+//Element to keep track of the processors score and miss
 function Processor(){
     return(
         <div>
@@ -105,6 +111,7 @@ function Processor(){
     );
 }
 
+//Element to keep track of the net score and miss
 function Net(){
     return(
         <div>

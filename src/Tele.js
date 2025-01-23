@@ -2,6 +2,8 @@ import { NavButB, NavButN } from "./App";
 import { Tally } from "./Functions";
 import {vlairiables} from "./Functions"
 
+//Element to organise all the tele page elements
+//All elements with props are dictated on thier pages
 export function TelePage() {
     return(
     <div class="screen">
@@ -21,6 +23,7 @@ export function TelePage() {
     );  
 }
 
+//element to keep track of the shots taken with coral
 function Coral() {
     return(
         <div>
@@ -35,6 +38,7 @@ function Coral() {
     );
 }
 
+//element to keep track of the score with coral
 function Score() {
     return(
         <div class="column">
@@ -55,6 +59,7 @@ function Score() {
     )
 }
 
+//label for organisation
 function Label() {
     return(
         <div class="column">
@@ -66,6 +71,7 @@ function Label() {
     );
 }
 
+//Element to keep track of misses with coral
 function Miss() {
     return(
       <div class="column">
@@ -85,6 +91,7 @@ function Miss() {
     );
 }
 
+//Element to keep track of processor shots and misses
 function Processor() {
     return(
         <div>
@@ -98,6 +105,7 @@ function Processor() {
     );
 }
 
+//Element to keep track of net shots and misses
 function Net() {
     return(
         <div>
@@ -111,6 +119,7 @@ function Net() {
     );
 }
 
+//Elements to track robot breakdowns and recoveries
 function Breakdown() {
     return(
         <div class="column">

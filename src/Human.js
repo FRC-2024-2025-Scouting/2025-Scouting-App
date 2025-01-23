@@ -1,6 +1,8 @@
 import { FinishBut, HomePageBut } from "./App";
 import { Tally, TextBox } from "./Functions";
 
+//Main exported page with all organised elements
+//All imported elements and thier props are dictated on their home page
 export function HumanPage() {
     return(
         <div class="screen">
@@ -12,6 +14,7 @@ export function HumanPage() {
     );
 }
 
+//Element to contain human scouters Identification and who their scouting
 function ID() {
     return(
         <div class="column">
@@ -31,6 +34,7 @@ function ID() {
     );
 }
 
+//Element to track human shots on the net
 function Net() {
     return(
     <div>

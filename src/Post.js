@@ -1,6 +1,8 @@
 import {FinishBut, NavButB} from './App.js'
 import { CardBox, TextBox } from './Functions.js';
 
+//Main exported page with all elements
+//All imported elements and props are dictated on thier home page
 export function PostPage() {
     return(
         <div class="screen">
@@ -15,6 +17,7 @@ export function PostPage() {
     );
 }
 
+//Element to keep track of Cards
 function Cards() {
     return(
         <div>

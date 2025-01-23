@@ -1,6 +1,8 @@
 import { NavButB, NavButN } from "./App";
 import { Tally, Checkbox } from "./Functions";
 
+//Main exported page element
+//All elements and props imported are dictated on thier home pages
 export function EndPage() {
     return(
         <div class="screen">
@@ -18,6 +20,7 @@ export function EndPage() {
     ); 
 }
 
+//Element to track the shallow hangs and falls
 function Shallow() {
     return(
         <div>
@@ -31,6 +34,7 @@ function Shallow() {
     );
 }
 
+//Element to track the deep hangs and falls
 function Deep() {
     return(
         <div>

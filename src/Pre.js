@@ -1,6 +1,8 @@
 import { NavButB, NavButN } from "./App";
 import { TeamBox, TextBox } from "./Functions";
 
+//Buttons imported from the function page
+//All props are explained on the functions page
 export function PrePage() {
     return(
   <body>

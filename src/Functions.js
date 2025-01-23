@@ -2,38 +2,41 @@ import { useState, useEffect } from 'react';
 import { HomePageBut } from "./App";
 import {QRCodeSVG} from 'qrcode.react';
 
+//Big daddy page
+
+//All the variables that get changed
+//Vlairiables (Pronounced (Vfl-air)-i-a-bles) an apitomation of variables because that wasnt a valid name
 const initialVlairiables = {
-    scoutName: "", 
-    matchNum: "",  
-    teamNum: "",   
+    teamNum: "", 
+    matchNum: "",    
     colour: false,    
     moved: false,  
-    AL1S: 0,       
-    AL2S: 0,       
-    AL3S: 0,       
-    AL4S: 0,       
-    AL1M: 0,       
-    AL2M: 0,       
-    AL3M: 0,       
+    AL1S: 0, 
+    AL1M: 0,         
+    AL2S: 0,  
+    AL2M: 0,      
+    AL3S: 0,   
+    AL3M: 0,     
+    AL4S: 0,                   
     AL4M: 0,       
     APS: 0,        
     APM: 0,        
     ANS: 0,        
-    ANM: 0,        
-    TL1S: 0,       
-    TL2S: 0,       
-    TL3S: 0,       
-    TL4S: 0,       
-    TL1M: 0,       
-    TL2M: 0,       
+    ANM: 0,  
+    BRKDN: 0,      
+    RCVR: 0,         
+    TL1S: 0,   
+    TL1M: 0,      
+    TL2S: 0,   
+    TL2M: 0,      
+    TL3S: 0, 
     TL3M: 0,       
+    TL4S: 0,                  
     TL4M: 0,       
     TPS: 0,        
     TPM: 0,        
     TNS: 0,        
-    TNM: 0,        
-    BRKDN: 0,      
-    RCVR: 0,       
+    TNM: 0,            
     PRK: false,    
     SCC: 0,        
     SCF: 0,        
@@ -41,32 +44,39 @@ const initialVlairiables = {
     DCF: 0,        
     Cards: 0,      
     Fouls: 0,      
+    scoutName: "",    
     HMNS: 0,       
-    HMNM: 0,       
+    HMNM: 0,    
 };
 
+//creates a copy to hold base variables for reseting purposes
 export const vlairiables = { ...initialVlairiables };
 
+//Element containing a + and - button that change the value of vlair
 export function Tally({ vlair }) {
+    //Create the count variable to update the dictated vlair
     const [count, setCount] = useState(Number(vlairiables[vlair])); 
+    //Vlair (pronounced Vfl-air) a apitimation of var because i couldnt use var for the prop name
 
+    //Function to increment the count
     const increment = () => {
-        const newCount = count + 1;
+        const newCount = count + 1;  //define and add to newCount
         setCount(newCount);
-        vlairiables[vlair] = newCount;
-        console.log(vlairiables);
+        vlairiables[vlair] = newCount; //set the dictated vlair to what the new count is
+        console.log(vlairiables); //Testing
     };
 
-    // Decrement function
+    //Function to deincrement the count
     const deincrement = () => {
-        if (count > 0) {
-            const newCount = count - 1;
+        if (count > 0) { //Only call if count is greater than 0 to prevent negative numbers
+            const newCount = count - 1; //define and subtract to newCount
             setCount(newCount);
-            vlairiables[vlair] = newCount;
-            console.log(vlairiables);
+            vlairiables[vlair] = newCount; //set the dictated vlair to what the new count is
+            console.log(vlairiables);//Testing
         }
     };
     return (
+        //Display
         <div className="row">
             <button className="autoButton" onClick={deincrement}> &lt; </button>
             <div className="autoCounter">{count}</div>
@@ -75,15 +85,17 @@ export function Tally({ vlair }) {
     );
 };
 
+//Element to contain checkboxes for a single variable
 export function Checkbox({ vlair, style }) {
+    //create the variable that handles the visual state of the checkbox
     const [checked, setChecked] = useState(vlairiables[vlair] || false);
 
+    //function to toggle checkbox on and off
     const togIt = () => {
-        setChecked(prevChecked => !prevChecked);
-        vlairiables[vlair] = !checked;
-        console.log(vlairiables);
+        setChecked(prevChecked => !prevChecked); //sets the checked variable to the opposite of what it is currently
+        vlairiables[vlair] = !checked; // sets the dictated variable to the checked property
     };
-
+    //visual
     return (
         <input
             type="checkbox"
@@ -94,39 +106,47 @@ export function Checkbox({ vlair, style }) {
     );
 }
 
+//checkbox specificaly designed for the teams color
 export function TeamBox({ vlair }) {
+    //same as the other checkbox
     const [checked, setChecked] = useState(vlairiables[vlair] || false);
 
+    //function to toggle the visuals of the checkbox
     const toggleCheckbox = () => {
-        setChecked(prevChecked => !prevChecked);
-        vlairiables[vlair] = !checked;
-        console.log(vlairiables);
+        setChecked(prevChecked => !prevChecked); //sets the visual to the oposite of wha tits checked right now
+        vlairiables[vlair] = !checked; //sets the dictated variable
     };
 
+    //display
     return (
         <div>
             <input
                 type="checkbox"
                 id="red"
                 onChange={toggleCheckbox}
-                checked={checked}
+                checked={checked}//starts unchecked
             />
             <input
                 type="checkbox"
                 id="blue"
                 onChange={toggleCheckbox}
-                checked={!checked}
+                checked={!checked}//starts checked
             />
         </div>
     );
 }
 
+
+//checkbox specificaly designed for the red and yellow cards
 export function CardBox({ vlair }) {
+    //similar to the last two except theres 2 checked for each box
     const [count, setCount] = useState(Number(vlairiables[vlair])); 
     const [checked1, setChecked1] = useState(false);
     const [checked2, setChecked2] = useState(false);
 
+    //function to update the dictated var
     const updateVlare = () => {
+        //function basicaly assings a numerical value to represent nither checked, 1 checked, or 2 checked
         let newCount = 0;
         if (checked1 && checked2) {
             newCount = 2;
@@ -134,10 +154,10 @@ export function CardBox({ vlair }) {
             newCount = 1;
         }
         setCount(newCount);
-        vlairiables[vlair] = newCount;
-        console.log(vlairiables);
+        vlairiables[vlair] = newCount; //sets the value to the dictated var
     };
 
+    //function to handle the checkedness of the first box
     const handleCheckbox1Change = () => {
         setChecked1(prevChecked => {
             const newChecked1 = !prevChecked;
@@ -145,6 +165,7 @@ export function CardBox({ vlair }) {
         });
     };
 
+    //funnction to handle the checkedness of the second box
     const handleCheckbox2Change = () => {
         setChecked2(prevChecked => {
             const newChecked2 = !prevChecked;
@@ -152,10 +173,12 @@ export function CardBox({ vlair }) {
         });
     };
 
+    //function to update the var with some checked nonsense going on
     useEffect(() => {
         updateVlare();
     }, [checked1, checked2]);
 
+    //display
     return (
         <div className="row">
             <input
@@ -174,16 +197,19 @@ export function CardBox({ vlair }) {
     );
 }
 
+//Element for the text box
 export function TextBox({ vlair, tooltip }) {
+    //similar to the checkbox and tally except for a string
     const [text, setText] = useState(vlairiables[vlair] || ''); 
 
+    //called whenever text is imputed to update the var to the dictated change
     const handleChange = (event) => {
-        const newText = event.target.value;
+        const newText = event.target.value;//applys the changes to the new text var
         setText(newText);
-        vlairiables[vlair] = newText;
-        console.log(vlairiables);
+        vlairiables[vlair] = newText;//set the var to the new text
     };
 
+    //display
     return (
         <div className="row">
             <input
@@ -191,14 +217,15 @@ export function TextBox({ vlair, tooltip }) {
                 placeholder={tooltip}
                 className="autoInput"
                 value={text}
-                onChange={handleChange}
+                onChange={handleChange}//calls whenever text input
             />
         </div>
     );
 };
 
+//function to reset the variables element when restarting scouting - mostly for other scripts
 export function resetVlairiables ()  {
-    Object.assign(vlairiables, { ...initialVlairiables });
+    Object.assign(vlairiables, { ...initialVlairiables }); //sets the current used variables to the copy made at the start
     console.log('Vlairiables have been reset:', vlairiables);
 };
 
@@ -218,9 +245,11 @@ export function convertToCsv(data) {
     return values.join(",") + "\n";
 }
 
+//Element to print qr codes containing the data
 export function OutputVar() {
     const [qrCodeData, setQrCodeData] = useState(""); // State to store the QR code data
 
+    //function to generate the qr code with data
     const printVar = () => {
         const newText = JSON.stringify(vlairiables, null, 2);
         const csvContent = convertToCsv(vlairiables);
@@ -228,11 +257,13 @@ export function OutputVar() {
         resetVlairiables()
     };
 
+    //resets the variables in its own instance
     const resetVlairiables = () => {
         Object.assign(vlairiables, { ...initialVlairiables });
         console.log('Vlairiables have been reset:', vlairiables);
     };
 
+    //display
     return (
         <div className="screen">
             <div id="qrCode">

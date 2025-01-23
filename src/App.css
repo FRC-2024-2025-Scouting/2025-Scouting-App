@@ -1,3 +1,4 @@
+/*Placeholder for phone screen just to organise it in a phones format*/
 .screen {
     width: 360px;
     height: 640px;
@@ -7,6 +8,7 @@
     align-items: center;
 }
 
+/*Text Boxes*/
 input[type=text] {
     margin-top: 20px;
     width: 175px;
@@ -23,6 +25,7 @@ input[type=text]:focus {
     border-bottom: 3px solid #555;
 }
 
+/*Header class*/
 .head {
     text-align: center;
     font-size: larger;
@@ -30,16 +33,19 @@ input[type=text]:focus {
     margin: 10px 10px;
 }
 
+/*To organise things in a column*/
 .column{
     display: flex;
     flex-direction: column;
 }
 
+/*To organise things in a row*/
 .row{
     display: flex;
     flex-direction: row;
 }
 
+/*Checkbox box*/
 input[type="checkbox"]#red {
         margin-right: 15px;
         width: 40px;
@@ -98,7 +104,7 @@ input[type="checkbox"]#yellow:checked{
 }
 
 /*Home*/
-
+    /*Originaly ment for the home page but got expanded to all pages too lazy to change name*/
     .homeButton{
         margin-top: 20px;
         width: 175px;
@@ -123,6 +129,7 @@ input[type="checkbox"]#yellow:checked{
     }
 
 /*Auto*/
+    /*Same thing with these but they are for the imputs*/
     .autoButton{
         width: 30px;
         height: 30px;
@@ -152,6 +159,7 @@ input[type="checkbox"]#yellow:checked{
         text-align: center;
     }
 
+    /*To spacers for formating putpouses*/
     #spacer1{
         margin-top: 30px;
     }
@@ -163,16 +171,18 @@ input[type="checkbox"]#yellow:checked{
 
 
     /*Temporary?*/
+    /*Permanets acctualy*/
     .center {
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    #scanner {
-        width: fit-content;
-        height: fit-content;
+    .scanner {
+        width: 300px;
+        height: 224px;
         border: black solid 4px;
+        margin-bottom: 90px;
     }
 
     #qrCode {
@@ -183,8 +193,10 @@ input[type="checkbox"]#yellow:checked{
     }
     /*Temporary?*/
 
+    /*an extra class to be tacked onto the homebuttons to format them to fit the nav buttons*/
     .navBut {
         width: 50px;
         height: 50px;
         margin: 20px 50px;
     }
+
