@@ -5,8 +5,8 @@ import { TeamBox, TextBox } from "./Functions";
 //All props are explained on the functions page
 export function PrePage() {
     return(
-  <body>
     <div class="screen">
+      <div class="head">PRE MATCH PAGE</div>
       <TextBox
       vlair="scoutName"
       tooltip="Name"
@@ -29,6 +29,5 @@ export function PrePage() {
         <NavButN next={2}/>
       </div>
     </div>
-  </body>
     );
   }

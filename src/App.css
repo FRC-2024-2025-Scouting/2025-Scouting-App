@@ -1,10 +1,14 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    justify-content: center;
+}
+
 /*Placeholder for phone screen just to organise it in a phones format*/
 .screen {
-    width: 360px;
-    height: 640px;
     display: flex;
+    flex: 1;
     flex-direction: column;
-    border: black solid 2px;
     align-items: center;
 }
 
@@ -75,7 +79,6 @@ input[type="checkbox"]#blue:checked{
 }
 
 input[type="checkbox"]#gray {
-    margin-right: 15px;
     width: 40px;
     height: 40px;
     appearance: none;
@@ -131,8 +134,8 @@ input[type="checkbox"]#yellow:checked{
 /*Auto*/
     /*Same thing with these but they are for the imputs*/
     .autoButton{
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         border: solid #555555 1px;
         border-radius: 10px;
         background-color: white;
@@ -142,21 +145,14 @@ input[type="checkbox"]#yellow:checked{
         font-size: large;
     }
 
-    .autoButton:hover{
-        background-color: gainsboro;
-    }
-
-    .autoButton:active{
-        background-color: rgb(167, 167, 167);
-    }
-
     .autoCounter{
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         border: solid #555555 1px;
         border-radius: 10px;
         background-color: white;
         text-align: center;
+        font-size: larger;
     }
 
     /*To spacers for formating putpouses*/
@@ -166,7 +162,7 @@ input[type="checkbox"]#yellow:checked{
 
     .spacer2{
         margin: 17px;
-        margin-top: 2px;
+        margin-top: 10px;
     }
 
 
@@ -198,5 +194,17 @@ input[type="checkbox"]#yellow:checked{
         width: 50px;
         height: 50px;
         margin: 20px 50px;
+    }
+
+    .red {
+        background-color: #b95146;
+    }
+
+    .blue {
+        background-color: #008CBA;
+    }
+
+    .yellow {
+        background-color: #fdf500;
     }
 

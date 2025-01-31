@@ -5,22 +5,21 @@ import { Tally, Checkbox } from "./Functions";
 //All elements with props are dictated on thier main page
 export function AutoPage() {
     return(
-  <body>
     <div class="screen">
+        <div class="head">AUTO PAGE</div>
         <Coral/>
         <Processor/>
         <Net/>
         <div class="head">Moved?</div>
         <Checkbox
-        vlair="moved"
-        style="gray"
+            vlair="moved"
+            style="gray"
         />
         <div class="row">
             <NavButB last={1}/>
             <NavButN next={3}/>
         </div>
     </div>
-  </body>
     );
   }
 
@@ -31,15 +30,19 @@ function Score() {
 
             <Tally
             vlair="AL1S"
+            clors="blue"
             />
             <Tally
             vlair="AL2S"
+            clors="blue"
             />
             <Tally
             vlair="AL3S"
+            clors="blue"
             />
             <Tally
             vlair="AL4S"
+            clors="blue"
             />
         </div>
     );
@@ -64,15 +67,19 @@ function Miss() {
 
             <Tally
             vlair="AL1M"
+            clors="red"
             />
             <Tally
             vlair="AL2M"
+            clors="red"
             />
             <Tally
             vlair="AL3M"
+            clors="red"
             />
             <Tally
             vlair="AL4M"
+            clors="red"
             />
         </div>
     );
@@ -82,12 +89,12 @@ function Miss() {
 function Coral() {
     return(
         <div>
-            <div class="head">Miss &nbsp;&nbsp;&nbsp;&nbsp; Coral &nbsp;&nbsp;&nbsp;&nbsp; Score</div>
+            <div class="head">Miss &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Coral &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Score</div>
 
             <div class="row">
-                <Score/>
-                <Lable/>
                 <Miss/>
+                <Lable/>
+                <Score/>
             </div>
         </div>
     );
@@ -97,14 +104,16 @@ function Coral() {
 function Processor(){
     return(
         <div>
-            <div class="head">Miss &nbsp;Processor&nbsp; Score</div>
+            <div class="head">Miss&nbsp;&nbsp;&nbsp;&nbsp;Processor&nbsp;&nbsp;&nbsp;&nbsp; Score</div>
             <div class="row">
                 <Tally
-                vlair="APS"
+                vlair="APM"
+                clors="red"
                 />
                 <div class="spacer2"/>
                 <Tally
-                vlair="APM"
+                vlair="APS"
+                clors="blue"
                 />
             </div>
         </div>
@@ -115,14 +124,16 @@ function Processor(){
 function Net(){
     return(
         <div>
-            <div class="head">Miss &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Net &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Score</div>
+            <div class="head">Miss &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Net &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Score</div>
             <div class="row">
                 <Tally
-                vlair="ANS"
+                vlair="ANM"
+                clors="red"
                 />
                 <div class="spacer2"/>
                 <Tally
-                vlair="ANM"
+                vlair="ANS"
+                clors="blue"
                 />
             </div>
         </div>

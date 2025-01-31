@@ -25,19 +25,21 @@ let routes = ["/", "/Pre", "/Auto", "/Tele", "/End", "/Post", "/Human", "/QR", "
 export default function MyApp() {
   return(
     <body>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<HomePage/>} />
-          <Route path="/Pre" element={<PrePage/>} />
-          <Route path="/Auto" element={<AutoPage/>} />
-          <Route path="/Tele" element={<TelePage/>} />
-          <Route path="/End" element={<EndPage/>} />
-          <Route path="/Post" element={<PostPage/>} />
-          <Route path="/Human" element={<HumanPage/>} />
-          <Route path="/QR" element={<QRPage/>} />
-          <Route path="/QrGen" element={<QrGen/>} />
-        </Routes>
-      </BrowserRouter>
+      <div class="screen">
+        <BrowserRouter>
+          <Routes>
+            <Route exact path="/" element={<HomePage/>} />
+            <Route path="/Pre" element={<PrePage/>} />
+            <Route path="/Auto" element={<AutoPage/>} />
+            <Route path="/Tele" element={<TelePage/>} />
+            <Route path="/End" element={<EndPage/>} />
+            <Route path="/Post" element={<PostPage/>} />
+            <Route path="/Human" element={<HumanPage/>} />
+            <Route path="/QR" element={<QRPage/>} />
+            <Route path="/QrGen" element={<QrGen/>} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </body>
   );
 }

@@ -61,6 +61,7 @@ function SendData() {
         document.body.appendChild(link);
         link.click();//clicks the link
         document.body.removeChild(link);//destroys link
+        exportData = [];
     }
 
     //display with button that calls the function

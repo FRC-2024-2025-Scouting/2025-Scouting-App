@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { HomePageBut } from "./App";
 import {QRCodeSVG} from 'qrcode.react';
+import Barcode from 'react-barcode';
+import { encodeVariables } from './bitPacking';
 
 //Big daddy page
 
@@ -49,11 +51,13 @@ const initialVlairiables = {
     HMNM: 0,    
 };
 
+let barcodeOutput;
+
 //creates a copy to hold base variables for reseting purposes
 export const vlairiables = { ...initialVlairiables };
 
 //Element containing a + and - button that change the value of vlair
-export function Tally({ vlair }) {
+export function Tally({ vlair, clors }) {
     //Create the count variable to update the dictated vlair
     const [count, setCount] = useState(Number(vlairiables[vlair])); 
     //Vlair (pronounced Vfl-air) a apitimation of var because i couldnt use var for the prop name
@@ -75,12 +79,20 @@ export function Tally({ vlair }) {
             console.log(vlairiables);//Testing
         }
     };
+    let butStyle = "autoButton"
+    if (clors == "red") {
+        butStyle += " red"
+    } else if (clors == "blue") {
+        butStyle += " blue"
+    } else if (clors == "yellow") {
+        butStyle += " yellow"
+    }
     return (
         //Display
         <div className="row">
-            <button className="autoButton" onClick={deincrement}> &lt; </button>
+            <button class={butStyle} onClick={deincrement}> &lt; </button>
             <div className="autoCounter">{count}</div>
-            <button className="autoButton" onClick={increment}> &gt; </button>
+            <button class={butStyle} onClick={increment}> &gt; </button>
         </div>
     );
 };
@@ -228,6 +240,7 @@ export function resetVlairiables ()  {
     Object.assign(vlairiables, { ...initialVlairiables }); //sets the current used variables to the copy made at the start
     console.log('Vlairiables have been reset:', vlairiables);
 };
+  
 
 // Function to convert data to CSV string
 export function convertToCsv(data) {
@@ -251,9 +264,9 @@ export function OutputVar() {
 
     //function to generate the qr code with data
     const printVar = () => {
-        const newText = JSON.stringify(vlairiables, null, 2);
         const csvContent = convertToCsv(vlairiables);
         setQrCodeData(csvContent); // Set QR code data
+        barcodeOutput = encodeVariables(vlairiables);
         resetVlairiables()
     };
 
@@ -266,6 +279,11 @@ export function OutputVar() {
     //display
     return (
         <div className="screen">
+            <Barcode value={barcodeOutput}   
+            displayValue={true}
+            width={1.4}
+            height={50}
+            />
             <div id="qrCode">
                 {qrCodeData && (
                     <div>

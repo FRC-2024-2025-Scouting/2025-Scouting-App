@@ -7,6 +7,7 @@ import {vlairiables} from "./Functions"
 export function TelePage() {
     return(
     <div class="screen">
+        <div class="head">TELE PAGE</div>
         <Coral/>
         <Processor/>
         <Net/>
@@ -29,9 +30,9 @@ function Coral() {
         <div>
             <div class="head">Miss &nbsp;&nbsp;&nbsp;&nbsp; Coral &nbsp;&nbsp;&nbsp;&nbsp; Score</div>
             <div class="row">
-                <Score/>
-                <Label/>
                 <Miss/>
+                <Label/>
+                <Score/>
             </div>
 
         </div>
@@ -45,15 +46,19 @@ function Score() {
   
             <Tally 
             vlair="TL1S"
+            clors="blue"
             />
             <Tally
             vlair="TL2S"
+            clors="blue"
             />
             <Tally
             vlair="TL3S"
+            clors="blue"
             />
             <Tally
             vlair="TL4S"
+            clors="blue"
             />
         </div>
     )
@@ -77,15 +82,19 @@ function Miss() {
       <div class="column">
         <Tally 
             vlair="TL1M"
+            clors="red"
             />
             <Tally
             vlair="TL2M"
+            clors="red"
             />
             <Tally
             vlair="TL3M"
+            clors="red"
             />
             <Tally
             vlair="TL4M"
+            clors="red"
             />
       </div>
     );
@@ -97,9 +106,15 @@ function Processor() {
         <div>
             <div class="head">Miss &nbsp;Processor&nbsp; Score</div>
             <div class="row">
-                <Tally vlair="TPS"/>
+                <Tally 
+                vlair="TPM"
+                clors="red"
+                />
                 <div class="spacer2"/>
-                <Tally vlair="TPM"/>
+                <Tally 
+                vlair="TPS"
+                clors="blue"
+                />
             </div>
         </div>
     );
@@ -111,9 +126,14 @@ function Net() {
         <div>
             <div class="head">Miss &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Net &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Score</div>
             <div class="row">
-                <Tally vlair="TNS"/>
+                <Tally vlair="TNM"
+                clors="red"
+                />
                 <div class="spacer2"/>
-                <Tally vlair="TNM"/>
+                <Tally 
+                vlair="TNS"
+                clors="blue"
+                />
             </div>
         </div>
     );
@@ -125,7 +145,9 @@ function Breakdown() {
         <div class="column">
             <div class="head">Breakdown</div>
             <div class="row">
-              <Tally vlair="BRKDN"/>
+              <Tally vlair="BRKDN"
+              clors="red"
+              />
             </div>
           </div>
     );
@@ -136,7 +158,10 @@ function Recovery() {
         <div class="column">
             <div class="head">Recovery</div>
             <div class="row">
-              <Tally vlair="RCVR"/>
+              <Tally 
+              vlair="RCVR"
+              clors="blue"
+              />
             </div>
         </div>
     )

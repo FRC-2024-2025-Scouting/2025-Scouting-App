@@ -6,6 +6,7 @@ import { CardBox, TextBox } from './Functions.js';
 export function PostPage() {
     return(
         <div class="screen">
+            <div class="head"> POST GAME PAGE</div>
             <Cards/>
             <TextBox
             vlair="foul"

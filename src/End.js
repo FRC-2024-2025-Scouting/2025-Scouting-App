@@ -6,6 +6,7 @@ import { Tally, Checkbox } from "./Functions";
 export function EndPage() {
     return(
         <div class="screen">
+            <div class="head"> END GAME PAGE</div>
             <div class="head">Park</div>
             <Checkbox
             vlair="PRK"
@@ -24,11 +25,17 @@ export function EndPage() {
 function Shallow() {
     return(
         <div>
-            <div class="head">Climb &nbsp;&nbsp;&nbsp;Shallow &nbsp;&nbsp;&nbsp;Fall</div>
+            <div class="head">Fall &nbsp;&nbsp;&nbsp;Shallow &nbsp;&nbsp;&nbsp;Climb</div>
                 <div class="row">
-                        <Tally vlair="SCC"/>
+                        <Tally 
+                        vlair="SCF"
+                        clors="red"
+                        />
                         <div class="spacer2"/>
-                        <Tally vlair="SCF"/>
+                        <Tally 
+                        vlair="SCC"
+                        clors="blue"
+                        />
                 </div>
         </div>
     );
@@ -38,11 +45,17 @@ function Shallow() {
 function Deep() {
     return(
         <div>
-            <div class="head">Climb &nbsp;&nbsp;&nbsp;&nbsp;Deep &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fall</div>
+            <div class="head">Fall &nbsp;&nbsp;&nbsp;&nbsp;Deep &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Climb</div>
                 <div class="row">
-                        <Tally vlair="DCC"/>
+                        <Tally 
+                        vlair="DCF"
+                        clors="red"
+                        />
                         <div class="spacer2"/>
-                        <Tally vlair="DCF"/>
+                        <Tally 
+                        vlair="DCC"
+                        clors="blue"
+                        />
                 </div>
         </div>
     );
