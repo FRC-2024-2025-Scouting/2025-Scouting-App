@@ -1,8 +1,4 @@
 import { useState, useEffect } from 'react';
-import { HomePageBut } from "./App";
-import {QRCodeSVG} from 'qrcode.react';
-import Barcode from 'react-barcode';
-import { encodeVariables } from './bitPacking';
 
 //Big daddy page
 
@@ -47,14 +43,19 @@ const initialVlairiables = {
     Cards: 0,      
     Fouls: 0,      
     scoutName: "",    
-    HMNS: 0,       
-    HMNM: 0,    
 };
 
-let barcodeOutput;
+const initHumanVlariables = {
+    HMNS: 0,       
+    HMNM: 0,  
+    scoutName: "",
+    teamNum: "",  
+    matchNum: "",
+}
 
 //creates a copy to hold base variables for reseting purposes
 export const vlairiables = { ...initialVlairiables };
+export const humanVlairiables = { ...initHumanVlariables };
 
 //Element containing a + and - button that change the value of vlair
 export function Tally({ vlair, clors }) {
@@ -77,6 +78,46 @@ export function Tally({ vlair, clors }) {
             setCount(newCount);
             vlairiables[vlair] = newCount; //set the dictated vlair to what the new count is
             console.log(vlairiables);//Testing
+        }
+    };
+    let butStyle = "autoButton"
+    if (clors == "red") {
+        butStyle += " red"
+    } else if (clors == "blue") {
+        butStyle += " blue"
+    } else if (clors == "yellow") {
+        butStyle += " yellow"
+    }
+    return (
+        //Display
+        <div className="row">
+            <button class={butStyle} onClick={deincrement}> &lt; </button>
+            <div className="autoCounter">{count}</div>
+            <button class={butStyle} onClick={increment}> &gt; </button>
+        </div>
+    );
+};
+
+export function HumanTally({ vlair, clors }) {
+    //Create the count variable to update the dictated vlair
+    const [count, setCount] = useState(Number(humanVlairiables[vlair])); 
+    //Vlair (pronounced Vfl-air) a apitimation of var because i couldnt use var for the prop name
+
+    //Function to increment the count
+    const increment = () => {
+        const newCount = count + 1;  //define and add to newCount
+        setCount(newCount);
+        humanVlairiables[vlair] = newCount; //set the dictated vlair to what the new count is
+        console.log(humanVlairiables); //Testing
+    };
+
+    //Function to deincrement the count
+    const deincrement = () => {
+        if (count > 0) { //Only call if count is greater than 0 to prevent negative numbers
+            const newCount = count - 1; //define and subtract to newCount
+            setCount(newCount);
+            humanVlairiables[vlair] = newCount; //set the dictated vlair to what the new count is
+            console.log(humanVlairiables);//Testing
         }
     };
     let butStyle = "autoButton"
@@ -235,10 +276,37 @@ export function TextBox({ vlair, tooltip }) {
     );
 };
 
+export function HumanTextBox({ vlair, tooltip }) {
+    //similar to the checkbox and tally except for a string
+    const [text, setText] = useState(humanVlairiables[vlair] || ''); 
+
+    //called whenever text is imputed to update the var to the dictated change
+    const handleChange = (event) => {
+        const newText = event.target.value;//applys the changes to the new text var
+        setText(newText);
+        humanVlairiables[vlair] = newText;//set the var to the new text
+    };
+
+    //display
+    return (
+        <div className="row">
+            <input
+                type="text"
+                placeholder={tooltip}
+                className="autoInput"
+                value={text}
+                onChange={handleChange}//calls whenever text input
+            />
+        </div>
+    );
+};
+
 //function to reset the variables element when restarting scouting - mostly for other scripts
 export function resetVlairiables ()  {
     Object.assign(vlairiables, { ...initialVlairiables }); //sets the current used variables to the copy made at the start
     console.log('Vlairiables have been reset:', vlairiables);
+    Object.assign(humanVlairiables, { ...initHumanVlariables }); //sets the current used variables to the copy made at the start
+    console.log('Human Vlairiables have been reset:', humanVlairiables);
 };
   
 
@@ -256,45 +324,4 @@ export function convertToCsv(data) {
 
     // Create the CSV content with values only, no headers
     return values.join(",") + "\n";
-}
-
-//Element to print qr codes containing the data
-export function OutputVar() {
-    const [qrCodeData, setQrCodeData] = useState(""); // State to store the QR code data
-
-    //function to generate the qr code with data
-    const printVar = () => {
-        const csvContent = convertToCsv(vlairiables);
-        setQrCodeData(csvContent); // Set QR code data
-        barcodeOutput = encodeVariables(vlairiables);
-        resetVlairiables()
-    };
-
-    //resets the variables in its own instance
-    const resetVlairiables = () => {
-        Object.assign(vlairiables, { ...initialVlairiables });
-        console.log('Vlairiables have been reset:', vlairiables);
-    };
-
-    //display
-    return (
-        <div className="screen">
-            <Barcode value={barcodeOutput}   
-            displayValue={true}
-            width={1.4}
-            height={50}
-            />
-            <div id="qrCode">
-                {qrCodeData && (
-                    <div>
-                        <QRCodeSVG value={qrCodeData} size={256} />
-                    </div>
-                )}
-            </div>
-            <button className="homeButton" onClick={printVar}>
-                Generate QR
-            </button>
-            <HomePageBut />
-        </div>
-    );
 }

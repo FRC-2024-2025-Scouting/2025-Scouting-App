@@ -13,10 +13,11 @@ import { PostPage } from './Post.js';
 import { HumanPage } from './Human.js';
 import { QRPage } from './QR.js';
 import { QrGen } from './QRGen.js';
+import { HumanQrGen } from './HumanQrPage.js';
 import { vlairiables, resetVlairiables } from './Functions.js';
 //Variables for page navigation purposes
 let human = false;
-let routes = ["/", "/Pre", "/Auto", "/Tele", "/End", "/Post", "/Human", "/QR", "/QrGen"];
+let routes = ["/", "/Pre", "/Auto", "/Tele", "/End", "/Post", "/Human", "/QR", "/QrGen", "/HumanQrGen"];
 {/*
 
  */}
@@ -37,6 +38,7 @@ export default function MyApp() {
             <Route path="/Human" element={<HumanPage/>} />
             <Route path="/QR" element={<QRPage/>} />
             <Route path="/QrGen" element={<QrGen/>} />
+            <Route path="/HumanQrGen" element={<HumanQrGen/>}/>
           </Routes>
         </BrowserRouter>
       </div>
@@ -150,6 +152,19 @@ export function FinishBut() {
   const finishPage = () => {
     human = false;
     navigate('/QrGen')
+  }
+  return(
+    <button class="homeButton" onClick={finishPage}>
+      Finish Scouting
+    </button>
+  );
+}
+
+export function HumanQrBut() {
+  const navigate = useNavigate()
+  const finishPage = () => {
+    human = false;
+    navigate('/HumanQrGen')
   }
   return(
     <button class="homeButton" onClick={finishPage}>

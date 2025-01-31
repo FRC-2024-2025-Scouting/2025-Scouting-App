@@ -1,9 +1,49 @@
-import { OutputVar } from "./Functions"
+import { vlairiables, convertToCsv, initialVlairiables } from "./Functions"
+import { HomePageBut } from "./App";
+import {QRCodeSVG} from 'qrcode.react';
+import Barcode from 'react-barcode';
+import { encodeVariables } from './bitPacking';
+import { useState } from "react";
 
-//I could just delete this script and instead import the function into
-//my app script but i dont wanna
+let barcodeOutput;
+
 export function QrGen() {
-    return(
-        <OutputVar/>
+    const [qrCodeData, setQrCodeData] = useState(""); // State to store the QR code data
+
+    //function to generate the qr code with data
+    const printVar = () => {
+        const csvContent = convertToCsv(vlairiables);
+        setQrCodeData(csvContent); // Set QR code data
+        barcodeOutput = encodeVariables(vlairiables);
+        resetVlairiables()
+    };
+
+    //resets the variables in its own instance
+    const resetVlairiables = () => {
+        Object.assign(vlairiables, { ...initialVlairiables });
+        console.log('Vlairiables have been reset:', vlairiables);
+    };
+
+    //display
+    return (
+        <div className="screen">
+            <div class="head">QR GENERATION PAGE</div>
+            <Barcode value={barcodeOutput}   
+            displayValue={true}
+            width={1.4}
+            height={50}
+            />
+            <div id="qrCode">
+                {qrCodeData && (
+                    <div>
+                        <QRCodeSVG value={qrCodeData} size={256} />
+                    </div>
+                )}
+            </div>
+            <button className="homeButton" onClick={printVar}>
+                Generate QR
+            </button>
+            <HomePageBut />
+        </div>
     );
 }

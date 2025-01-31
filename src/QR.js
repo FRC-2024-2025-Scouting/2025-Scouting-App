@@ -9,7 +9,7 @@ let exportData = []
 export function QRPage() {
     return(
         <div class="screen">
-        <div class="head">QR</div>
+        <div class="head">QR SCANNING PAGE</div>
             <TempIcon/>
             <Buttons/>  
       </div>
@@ -29,7 +29,7 @@ const TempIcon = () => {
         <div class="center scanner">
             <QrReader
                 ViewFinder={"video"}
-                scanDelay={500}
+                scanDelay={0}
                 onResult={(result) => {
                     if (!!result) {
                         for (let index = 0; index < exportData.length; index++) {

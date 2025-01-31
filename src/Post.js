@@ -13,7 +13,7 @@ export function PostPage() {
             tooltip="Fouls"
             />
             <NavButB last={4}/>
-            <FinishBut next={6}/>
+            <FinishBut type={1}/>
         </div>
     );
 }

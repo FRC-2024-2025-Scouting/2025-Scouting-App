@@ -95,7 +95,3 @@ export function encodeVariables (variables) {
 
   return byteArray;
 };
-
-const decoder = new TextDecoder("utf8");
-
-barcodeOutput = btoa(decoder.decode(byteArray))

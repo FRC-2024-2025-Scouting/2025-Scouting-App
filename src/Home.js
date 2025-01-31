@@ -5,6 +5,7 @@ export function HomePage() {
     return(
   <body>
       <div class="screen">
+      <div class="head">HOME PAGE</div>
         <StartScoutBut/>
         <QRBut/>
         <HumanBut/>
