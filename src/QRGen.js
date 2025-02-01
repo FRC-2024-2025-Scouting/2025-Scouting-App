@@ -2,7 +2,7 @@ import { vlairiables, convertToCsv, initialVlairiables } from "./Functions"
 import { HomePageBut } from "./App";
 import {QRCodeSVG} from 'qrcode.react';
 import Barcode from 'react-barcode';
-import { encodeVariables } from './bitPacking';
+import { encodeVariables, decodeVariables } from './bitPacking';
 import { useState } from "react";
 
 let barcodeOutput;
@@ -16,6 +16,10 @@ export function QrGen() {
         setQrCodeData(csvContent); // Set QR code data
         barcodeOutput = encodeVariables(vlairiables);
         resetVlairiables()
+        const node = document.createElement("p");
+        const textnode = document.createTextNode(JSON.stringify(decodeVariables(barcodeOutput)));
+        node.appendChild(textnode);
+        document.getElementById("specialArea").appendChild(node);
     };
 
     //resets the variables in its own instance
@@ -44,6 +48,7 @@ export function QrGen() {
                 Generate QR
             </button>
             <HomePageBut />
+            <div id="specialArea"></div>
         </div>
     );
 }

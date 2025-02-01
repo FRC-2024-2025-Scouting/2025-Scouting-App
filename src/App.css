@@ -4,6 +4,10 @@ html, body {
     justify-content: center;
 }
 
+.VersionNumber {
+    text-align: end;
+}
+
 /*Placeholder for phone screen just to organise it in a phones format*/
 .screen {
     display: flex;
@@ -97,13 +101,13 @@ input[type="checkbox"]#yellow {
     width: 40px;
     height: 40px;
     appearance: none;
-    border: solid #fdf500 2px;
+    border: solid #d0c200 2px;
     background-color: white;
     cursor: pointer;
 }
 
 input[type="checkbox"]#yellow:checked{
-    background-color: #fdf500;
+    background-color: #d0c200;
 }
 
 /*Home*/

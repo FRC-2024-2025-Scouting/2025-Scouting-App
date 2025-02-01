@@ -95,3 +95,65 @@ export function encodeVariables (variables) {
 
   return byteArray;
 };
+
+export function decodeVariables(byteArray) {
+  const variables = {};
+
+  variables.teamNum = byteArray[0] | (byteArray[1] & 0b111111) << 8;
+  
+  variables.SCC = (byteArray[1] >> 6) & 0b11;
+
+  variables.matchNum = byteArray[2] & 0b1111111;
+  variables.colour = (byteArray[2] >> 7) & 0b1;
+
+  variables.AL1S = byteArray[3] & 0b111;
+  variables.AL1M = (byteArray[3] >> 3) & 0b111;
+  variables.BRKDN = (byteArray[3] >> 6) & 0b11;
+
+  variables.AL2S = byteArray[4] & 0b111;
+  variables.AL2M = (byteArray[4] >> 3) & 0b111;
+  variables.RCVR = (byteArray[4] >> 6) & 0b11;
+
+  variables.AL3S = byteArray[5] & 0b111;
+  variables.AL3M = (byteArray[5] >> 3) & 0b111;
+  variables.SCF = (byteArray[5] >> 6) & 0b11;
+
+  variables.AL4S = byteArray[6] & 0b111;
+  variables.AL4M = (byteArray[6] >> 3) & 0b111;
+  variables.DCC = (byteArray[6] >> 6) & 0b11;
+
+  variables.APS = byteArray[7] & 0b111;
+  variables.APM = (byteArray[7] >> 3) & 0b111;
+  variables.DCF = (byteArray[7] >> 6) & 0b11;
+  
+  variables.ANS = byteArray[8] & 0b111;
+  variables.ANM = (byteArray[8] >> 3) & 0b111;
+  variables.Cards = (byteArray[8] >> 6) & 0b11;
+
+  variables.TL1S = byteArray[9] & 0b1111;
+  variables.TL1M = (byteArray[9] >> 4) & 0b1111;
+
+  variables.TL2S = byteArray[10] & 0b1111;
+  variables.TL2M = (byteArray[10] >> 4) & 0b1111;
+
+  variables.TL3S = byteArray[11] & 0b1111;
+  variables.TL3M = (byteArray[11] >> 4) & 0b1111;
+
+  variables.TL4S = byteArray[12] & 0b1111;
+  variables.TL4M = (byteArray[12] >> 4) & 0b1111;
+
+  variables.TPS = byteArray[13] & 0b1111;
+  variables.TPM = (byteArray[13] >> 4) & 0b1111;
+
+  variables.TNS = byteArray[14] & 0b1111;
+  variables.TNM = (byteArray[14] >> 4) & 0b1111;
+
+  variables.scoutName = byteArray[15] & 0b111111;
+  variables.moved = (byteArray[15] >> 6) & 0b1;
+  variables.PRK = (byteArray[15] >> 7) & 0b1;
+
+  variables.Fouls = byteArray[16] & 0b1111;
+
+  return variables;
+}
+
