@@ -9,7 +9,7 @@ export function PostPage() {
             <div class="head"> POST GAME PAGE</div>
             <Cards/>
             <TextBox
-            vlair="foul"
+            vlair="Fouls"
             tooltip="Fouls"
             />
             <NavButB last={4}/>

@@ -4,8 +4,11 @@ import {QRCodeSVG} from 'qrcode.react';
 import Barcode from 'react-barcode';
 import { encodeVariables, decodeVariables } from './bitPacking';
 import { useState } from "react";
+import { json } from "react-router-dom";
 
-let barcodeOutput;
+let barcodeOutput = new Uint8Array(17);
+
+
 
 export function QrGen() {
     const [qrCodeData, setQrCodeData] = useState(""); // State to store the QR code data
@@ -32,10 +35,11 @@ export function QrGen() {
     return (
         <div className="screen">
             <div class="head">QR GENERATION PAGE</div>
-            <Barcode value={barcodeOutput}   
+            <Barcode value={barcodeOutput}
             displayValue={true}
-            width={1.4}
+            width={2}
             height={50}
+            //format={"EAN13"}
             />
             <div id="qrCode">
                 {qrCodeData && (

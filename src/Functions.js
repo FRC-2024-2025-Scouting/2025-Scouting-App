@@ -46,11 +46,13 @@ const initialVlairiables = {
 };
 
 const initHumanVlariables = {
-    HMNS: 0,       
-    HMNM: 0,  
-    scoutName: "",
-    teamNum: "",  
-    matchNum: "",
+    HMNteamNum: "",  //2^14
+    HMNmatchNum: "", //2^7
+    HMNColor: false, //max of 2^1
+    HMNS: 0,  //max of 2^4 
+    HMNM: 0,  //max of 2^4
+
+    HMNscoutName: "",
 }
 
 //creates a copy to hold base variables for reseting purposes

@@ -1,5 +1,5 @@
 import { HumanQrBut, HomePageBut } from "./App";
-import { HumanTally, HumanTextBox } from "./Functions";
+import { HumanTally, HumanTextBox, TeamBox } from "./Functions";
 
 //Main exported page with all organised elements
 //All imported elements and thier props are dictated on their home page
@@ -8,6 +8,9 @@ export function HumanPage() {
         <div class="screen">
             <div class="head">HUMAN PAGE</div>
             <ID/>
+            <TeamBox
+            vlair="HMNColor"
+            />
             <Net/>
             <HumanQrBut/>
             <HomePageBut/>
@@ -20,15 +23,15 @@ function ID() {
     return(
         <div class="column">
             <HumanTextBox
-            vlair="scoutName"
+            vlair="HMNscoutName"
             tooltip="Name"
             />
             <HumanTextBox
-            vlair="teamNum"
+            vlair="HMNteamNum"
             tooltip="Team Number"
             />
             <HumanTextBox
-            vlair="matchNum"
+            vlair="HMNmatchNum"
             tooltip="Match Number"
             />
         </div>

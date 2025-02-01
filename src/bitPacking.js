@@ -2,7 +2,7 @@ export function encodeVariables (variables) {
   const byteArray = new Uint8Array(17);
   variables.teamNum = Math.min(variables.teamNum, 0b11111111111111);
   byteArray[0] = variables.teamNum & 0b11111111;  
-  byteArray[1] = ((variables.teamNum >> 6) & 0b111111);
+  byteArray[1] = ((variables.teamNum >> 8) & 0b111111);  
   variables.SCC = Math.min(variables.SCC, 0b11);
   byteArray[1] += (variables.SCC & 0b11) << 6;
 
@@ -90,8 +90,8 @@ export function encodeVariables (variables) {
   variables.PRK = Math.min(variables.PRK, 0b1);
   byteArray[15] += (variables.PRK & 0b1) << 7;
 
-  variables.Fouls = Math.min(variables.Fouls, 0b1111);
-  byteArray[16] = variables.Fouls & 0b1111;
+  variables.Fouls = Math.min(variables.Fouls, 0b11111111);
+  byteArray[16] = variables.Fouls & 0b11111111;
 
   return byteArray;
 };
@@ -99,8 +99,7 @@ export function encodeVariables (variables) {
 export function decodeVariables(byteArray) {
   const variables = {};
 
-  variables.teamNum = byteArray[0] | (byteArray[1] & 0b111111) << 8;
-  
+  variables.teamNum = (byteArray[0] & 0b11111111) | ((byteArray[1] & 0b111111) << 8);
   variables.SCC = (byteArray[1] >> 6) & 0b11;
 
   variables.matchNum = byteArray[2] & 0b1111111;
@@ -125,7 +124,7 @@ export function decodeVariables(byteArray) {
   variables.APS = byteArray[7] & 0b111;
   variables.APM = (byteArray[7] >> 3) & 0b111;
   variables.DCF = (byteArray[7] >> 6) & 0b11;
-  
+
   variables.ANS = byteArray[8] & 0b111;
   variables.ANM = (byteArray[8] >> 3) & 0b111;
   variables.Cards = (byteArray[8] >> 6) & 0b11;
@@ -157,3 +156,26 @@ export function decodeVariables(byteArray) {
   return variables;
 }
 
+export function encodeHumanVariables(variables) {
+  const byteArray = new Uint8Array(17);
+
+  variables.HMNteamNum = Math.min(variables.HMNteamNum, 0b11111111111111);
+  byteArray[0] = variables.HMNteamNum & 0b11111111;  
+  byteArray[1] = ((variables.HMNteamNum >> 8) & 0b111111);  
+
+  variables.HMNmatchNum = Math.min(variables.HMNmatchNum, 0b1111111);
+  byteArray[2] = variables.HMNmatchNum & 0b1111111;
+  variables.HMNColor = Math.min(variables.HMNColor, 0b1);
+  byteArray[2] += variables.HMNColor & 0b1;
+
+  variables.HMNS = Math.min(variables.HMNS, 0b1111);
+  byteArray[3] = variables.HMNS & 0b1111;
+  variables.HMNM = Math.min(variables.HMNM, 0b1111)
+  byteArray[3] += variables.HMNM & 0b1111;
+
+  return byteArray;
+}
+
+export function decodeHumanVariables(byteArray) {
+
+}
