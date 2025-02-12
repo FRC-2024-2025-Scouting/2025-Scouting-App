@@ -96,7 +96,8 @@ export function encodeVariables (variables) {
   byteArray[16] = variables.Fouls & 0b11111111;
 
   console.log(byteArray)
-  return btoa(String.fromCharCode.apply(null, byteArray));
+  let data = btoa(String.fromCharCode.apply(null, byteArray));
+  return data.replace("+", "#");
 };
 
 export function decodeVariables(byteArray) {

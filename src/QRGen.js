@@ -3,7 +3,7 @@ import { HomePageBut } from "./App";
 import {QRCodeSVG} from 'qrcode.react';
 import Barcode from 'react-barcode';
 import { encodeVariables, decodeVariables } from './bitPacking';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { json } from "react-router-dom";
 
 let barcodeOutput = ""
@@ -29,7 +29,7 @@ export function QrGen() {
         Object.assign(vlairiables, { ...initialVlairiables });
         console.log('Vlairiables have been reset:', vlairiables);
     };
-
+    
     //display
     return (
         <div className="screen">

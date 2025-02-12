@@ -34,7 +34,8 @@ export const initialVlairiables = {
     TPS: 0,        
     TPM: 0,        
     TNS: 0,        
-    TNM: 0,            
+    TNM: 0,   
+    CGHIT: 0,         
     PRK: false,    
     SCC: 0,        
     SCF: 0,        
@@ -93,9 +94,9 @@ export function Tally({ vlair, clors }) {
     return (
         //Display
         <div className="row">
-            <button class={butStyle} onClick={deincrement}> &lt; </button>
+            <button class={butStyle} onClick={deincrement}> - </button>
             <div className="autoCounter">{count}</div>
-            <button class={butStyle} onClick={increment}> &gt; </button>
+            <button class={butStyle} onClick={increment}> + </button>
         </div>
     );
 };
@@ -133,9 +134,9 @@ export function HumanTally({ vlair, clors }) {
     return (
         //Display
         <div className="row">
-            <button class={butStyle} onClick={deincrement}> &lt; </button>
+            <button class={butStyle} onClick={deincrement}> - </button>
             <div className="autoCounter">{count}</div>
-            <button class={butStyle} onClick={increment}> &gt; </button>
+            <button class={butStyle} onClick={increment}> + </button>
         </div>
     );
 };
