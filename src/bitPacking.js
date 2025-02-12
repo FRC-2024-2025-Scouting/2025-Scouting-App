@@ -1,3 +1,5 @@
+import { replace } from "react-router-dom";
+
 export function encodeVariables (variables) {
   const byteArray = new Uint8Array(17);
   variables.teamNum = Math.min(variables.teamNum, 0b11111111111111);
@@ -93,7 +95,8 @@ export function encodeVariables (variables) {
   variables.Fouls = Math.min(variables.Fouls, 0b11111111);
   byteArray[16] = variables.Fouls & 0b11111111;
 
-  return byteArray;
+  console.log(byteArray)
+  return btoa(String.fromCharCode.apply(null, byteArray));
 };
 
 export function decodeVariables(byteArray) {

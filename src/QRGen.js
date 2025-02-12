@@ -6,8 +6,7 @@ import { encodeVariables, decodeVariables } from './bitPacking';
 import { useState } from "react";
 import { json } from "react-router-dom";
 
-let barcodeOutput = new Uint8Array(17);
-
+let barcodeOutput = ""
 
 
 export function QrGen() {
@@ -37,7 +36,7 @@ export function QrGen() {
             <div class="head">QR GENERATION PAGE</div>
             <Barcode value={barcodeOutput}
             displayValue={true}
-            width={2}
+            width={1.2}
             height={50}
             //format={"EAN13"}
             />

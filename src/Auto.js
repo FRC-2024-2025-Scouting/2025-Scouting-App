@@ -7,14 +7,14 @@ export function AutoPage() {
     return(
     <div class="screen">
         <div class="head">AUTO PAGE</div>
-        <Coral/>
-        <Processor/>
-        <Net/>
         <div class="head">Moved?</div>
         <Checkbox
             vlair="moved"
             style="gray"
         />
+        <Coral/>
+        <Processor/>
+        <Net/>
         <div class="row">
             <NavButB last={1}/>
             <NavButN next={3}/>

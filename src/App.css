@@ -33,6 +33,11 @@ input[type=text]:focus {
     border-bottom: 3px solid #555;
 }
 
+.right{
+    text-align: end;
+    align-items: end;
+}
+
 /*Header class*/
 .head {
     text-align: center;

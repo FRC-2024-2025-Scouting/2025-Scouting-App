@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 //All the variables that get changed
 //Vlairiables (Pronounced (Vfl-air)-i-a-bles) an apitomation of variables because that wasnt a valid name
-const initialVlairiables = {
+export const initialVlairiables = {
     teamNum: "", 
     matchNum: "",    
     colour: false,    

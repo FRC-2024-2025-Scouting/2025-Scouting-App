@@ -8,10 +8,6 @@ export function PrePage() {
     <div class="screen">
       <div class="head">PRE MATCH PAGE</div>
       <TextBox
-      vlair="scoutName"
-      tooltip="Name"
-      />
-      <TextBox
       vlair="teamNum"
       tooltip="Team Number"
       />

@@ -14,6 +14,7 @@ import { HumanPage } from './Human.js';
 import { QRPage } from './QR.js';
 import { QrGen } from './QRGen.js';
 import { HumanQrGen } from './HumanQrPage.js';
+import { SettingsPage } from "./SettingsPage.js";
 import { vlairiables, resetVlairiables } from './Functions.js';
 //Variables for page navigation purposes
 let human = false;
@@ -40,6 +41,7 @@ export default function MyApp() {
             <Route path="/QR" element={<QRPage/>} />
             <Route path="/QrGen" element={<QrGen/>} />
             <Route path="/HumanQrGen" element={<HumanQrGen/>}/>
+            <Route path="/Settings" element={<SettingsPage/>}/>
           </Routes>
         </BrowserRouter>
       </div>
@@ -60,6 +62,18 @@ export function StartScoutBut() {
       Start Scouting
     </button>
   );
+}
+
+export function SettingsBut() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/Settings")
+  }
+
+  return(
+    <button className='homeButton' onClick={handleClick}>Settings Page</button>
+  )
 }
 
 //QR Scanning button
