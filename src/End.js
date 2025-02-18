@@ -13,9 +13,23 @@ export function EndPage() {
             style="gray"/>
             <Shallow/>
             <Deep/>
+            <div class="head">Ally Cage Hit</div>
+            <Checkbox
+                vlair="ALCGHIT"
+                style="red"
+            />
             <div class="row">
+
+            <div class="navButText">
                 <NavButB last={3}/>
+                Tele
+                </div>
+
+                <div class="navButText">
                 <NavButN next={5}/>
+                Post Game
+                </div>
+
             </div>
         </div>
     ); 
@@ -34,7 +48,7 @@ function Shallow() {
                         <div class="spacer2"/>
                         <Tally 
                         vlair="SCC"
-                        clors="blue"
+                        clors="green"
                         />
                 </div>
         </div>
@@ -54,7 +68,7 @@ function Deep() {
                         <div class="spacer2"/>
                         <Tally 
                         vlair="DCC"
-                        clors="blue"
+                        clors="green"
                         />
                 </div>
         </div>

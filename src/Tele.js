@@ -16,14 +16,24 @@ export function TelePage() {
                 <div class="spacer2" />
                 <Recovery />
             </div>
-            <div class="head">Cage Hit</div>
+            <div class="head">Opponent Cage Hit</div>
             <Checkbox
-                vlair="CGHIT"
-                style="gray"
+                vlair="OPCGHIT"
+                style="red"
             />
             <div class="row">
+            
+            <div class="navButText">
                 <NavButB last={2} />
+                Auto
+            </div>
+
+            <div class="navButText">
                 <NavButN next={4} />
+                End Game
+            </div>
+
+
             </div>
         </div>
     );
@@ -51,19 +61,19 @@ function Score() {
 
             <Tally
                 vlair="TL1S"
-                clors="blue"
+                clors="green"
             />
             <Tally
                 vlair="TL2S"
-                clors="blue"
+                clors="green"
             />
             <Tally
                 vlair="TL3S"
-                clors="blue"
+                clors="green"
             />
             <Tally
                 vlair="TL4S"
-                clors="blue"
+                clors="green"
             />
         </div>
     )
@@ -118,7 +128,7 @@ function Processor() {
                 <div class="spacer2" />
                 <Tally
                     vlair="TPS"
-                    clors="blue"
+                    clors="green"
                 />
             </div>
         </div>
@@ -137,7 +147,7 @@ function Net() {
                 <div class="spacer2" />
                 <Tally
                     vlair="TNS"
-                    clors="blue"
+                    clors="green"
                 />
             </div>
         </div>
@@ -165,7 +175,7 @@ function Recovery() {
             <div class="row">
                 <Tally
                     vlair="RCVR"
-                    clors="blue"
+                    clors="green"
                 />
             </div>
         </div>

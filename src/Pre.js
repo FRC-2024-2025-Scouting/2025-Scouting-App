@@ -21,8 +21,17 @@ export function PrePage() {
       vlair="colour"/>
       </div>
       <div class="row">
+      
+      <div class="navButText">
         <NavButB last={0}/>
+        Home
+        </div>
+        
+        <div class="navButText">
         <NavButN next={2}/>
+        Auto
+        </div>
+
       </div>
     </div>
     );

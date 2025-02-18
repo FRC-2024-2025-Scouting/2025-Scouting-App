@@ -58,6 +58,12 @@ input[type=text]:focus {
     flex-direction: row;
 }
 
+.navButText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /*Checkbox box*/
 input[type="checkbox"]#red {
         margin-right: 15px;
@@ -113,6 +119,20 @@ input[type="checkbox"]#yellow {
 
 input[type="checkbox"]#yellow:checked{
     background-color: #d0c200;
+}
+
+input[type="checkbox"]#green {
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    appearance: none;
+    border: solid #15c741 2px;
+    background-color: white;
+    cursor: pointer;
+}
+
+input[type="checkbox"]#green:checked{
+    background-color: #15c741;
 }
 
 /*Home*/
@@ -217,3 +237,6 @@ input[type="checkbox"]#yellow:checked{
         background-color: #fdf500;
     }
 
+    .green {
+        background-color: #15c741;
+    }

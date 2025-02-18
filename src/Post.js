@@ -12,7 +12,11 @@ export function PostPage() {
             vlair="Fouls"
             tooltip="Fouls"
             />
+            
+            <div class="navButText">
             <NavButB last={4}/>
+            End Game
+            </div>
             <FinishBut type={1}/>
         </div>
     );

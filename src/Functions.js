@@ -35,7 +35,8 @@ export const initialVlairiables = {
     TPM: 0,        
     TNS: 0,        
     TNM: 0,   
-    CGHIT: 0,         
+    OPCGHIT: 0,
+    ALCGHIT: 0,                  
     PRK: false,    
     SCC: 0,        
     SCF: 0,        
@@ -90,7 +91,9 @@ export function Tally({ vlair, clors }) {
         butStyle += " blue"
     } else if (clors == "yellow") {
         butStyle += " yellow"
-    }
+    } else if (clors == "green") {
+        butStyle += " green"
+    } 
     return (
         //Display
         <div className="row">
