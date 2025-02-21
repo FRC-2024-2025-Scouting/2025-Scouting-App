@@ -92,8 +92,12 @@ export function encodeVariables (variables) {
   variables.PRK = Math.min(variables.PRK, 0b1);
   byteArray[15] += (variables.PRK & 0b1) << 7;
 
-  variables.Fouls = Math.min(variables.Fouls, 0b11111111);
-  byteArray[16] = variables.Fouls & 0b11111111;
+  variables.Fouls = Math.min(variables.Fouls, 0b111111);
+  byteArray[16] = variables.Fouls & 0b111111;
+  variables.OPCGHIT = Math.min(variables.OPCGHIT, 0b1);
+  byteArray[16] += (variables.OPCGHIT & 0b1) << 6;
+  variables.ALCGHIT = Math.min(variables.ALCGHIT, 0b1);
+  byteArray[16] += (variables.ALCGHIT & 0b1) << 7;
 
   console.log(byteArray)
   let data = btoa(String.fromCharCode.apply(null, byteArray));

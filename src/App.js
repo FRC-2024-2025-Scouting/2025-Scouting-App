@@ -28,7 +28,7 @@ export default function MyApp() {
   return(
     <body>
       <div class="screen">
-        <div class="VersionNumber">Version Alpha 1</div>
+        <div class="VersionNumber">Version Alpha 4.00</div>
         <BrowserRouter>
           <Routes>
             <Route exact path="/" element={<HomePage/>} />

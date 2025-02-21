@@ -47,7 +47,7 @@ export const initialVlairiables = {
     scoutName: "",    
 };
 
-const initHumanVlariables = {
+export const initHumanVlariables = {
     HMNteamNum: "",  //2^14
     HMNmatchNum: "", //2^7
     HMNColor: false, //max of 2^1
