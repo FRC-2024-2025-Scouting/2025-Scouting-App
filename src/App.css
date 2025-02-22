@@ -2,6 +2,7 @@ html, body {
     height: 100%;
     margin: 0;
     justify-content: center;
+    color: black;
 }
 
 .VersionNumber {
@@ -230,7 +231,7 @@ input[type="checkbox"]#green:checked{
     }
 
     .blue {
-        background-color: #008CBA;
+        background-color: #15c741;
     }
 
     .yellow {
@@ -240,3 +241,9 @@ input[type="checkbox"]#green:checked{
     .green {
         background-color: #15c741;
     }
+
+    .coral{
+        background-image: url(https://cdn.discordapp.com/attachments/367851439239987210/1342260808779960402/robotics_app_.jpg?ex=67b8fd4a&is=67b7abca&hm=40fe9d19efce552b61873e487036baeb8c8eb106ff099079a5941de5556761bd);
+        background-color: purple;
+    }
+    

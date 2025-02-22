@@ -50,7 +50,7 @@ const people = {
     "43": "Owen McKnigh",
     "44": "Parker Sanders",
     "45": "Rechelle Yue",
-    "46": "Kikki Jeong",
+    "46": "Rikki Jeong",
     "47": "Riley McElhinney",
     "48": "Ritu Garmin",
     "49": "Ryan Yue",

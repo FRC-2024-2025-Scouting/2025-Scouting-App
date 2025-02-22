@@ -1,11 +1,8 @@
 import { humanVlairiables, convertToCsv, initHumanVlariables } from "./Functions"
 import { HomePageBut } from "./App";
 import {QRCodeSVG} from 'qrcode.react';
-import Barcode from 'react-barcode';
 import { encodeHumanVariables } from './bitPacking';
 import { useState } from "react";
-
-let barcodeOutput;
 
 export function HumanQrGen () {
     const [qrCodeData, setQrCodeData] = useState(""); // State to store the QR code data
@@ -14,7 +11,6 @@ export function HumanQrGen () {
         const printVar = () => {
             const csvContent = convertToCsv(humanVlairiables);
             setQrCodeData(csvContent); // Set QR code data
-            barcodeOutput = encodeHumanVariables(humanVlairiables);
             resetVlairiables()
 
         };
@@ -29,11 +25,6 @@ export function HumanQrGen () {
         return (
             <div className="screen">
                 <div class="head">HUMAN QR GENERATION PAGE</div>
-                <Barcode value={barcodeOutput}   
-                displayValue={true}
-                width={1.4}
-                height={50}
-                />
                 <div id="qrCode">
                     {qrCodeData && (
                         <div>
