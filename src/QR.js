@@ -4,6 +4,10 @@ import { QrReader } from 'react-qr-reader';
 import { convertToCsv } from "./Functions";
 
 let exportData = []
+const constraints = {
+    facingMode: { exact: "environment" },
+  };
+  
 //Main exported page to be displayed
 //The home page but is dictated on app.js
 export function QRPage() {
@@ -29,6 +33,7 @@ const TempIcon = () => {
         <div class="center scanner">
             <QrReader
                 ViewFinder={"video"}
+                constraints={constraints}
                 scanDelay={0}
                 onResult={(result) => {
                     if (!!result) {
