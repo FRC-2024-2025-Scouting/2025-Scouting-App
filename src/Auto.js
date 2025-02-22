@@ -16,8 +16,15 @@ export function AutoPage() {
         <Processor/>
         <Net/>
         <div class="row">
-            <NavButB last={1}/>
-            <NavButN next={3}/>
+        <div class="navButText">
+                <NavButB last={1}/>
+                Pregame
+                </div>
+
+                <div class="navButText">
+                <NavButN next={3}/>
+                Tele 
+                </div>
         </div>
     </div>
     );
