@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { initialVlairiables } from "./Functions";
 
 const people = {
+    "0": "Mentour or Teacher",
     "1": "Aaron Cox",
     "2": "Aidan Kennedy",
     "3": "Alex Topuria",
@@ -49,10 +50,10 @@ const people = {
     "42": "Norah O'Keefe",
     "43": "Owen McKnigh",
     "44": "Parker Sanders",
-    "45": "Rechelle Yue",
+    "45": "Rachelle Yue",
     "46": "Rikki Jeong",
     "47": "Riley McElhinney",
-    "48": "Ritu Garmin",
+    "48": "Ritu Gorain",
     "49": "Ryan Yue",
     "50": "Saanvi Devgan",
     "51": "Sakib Islam",
@@ -79,9 +80,11 @@ export function SettingsPage() {
 
 function SaveBut() {
     const [name, setName] = useState(localStorage.getItem("scoutName") || "");
+    const [scoutIdSave, setScoutIdSave] = useState(localStorage.getItem("scoutId"))
 
     const saveID = () => {
         console.log("Saved ID as " + vlairiables["scoutName"]);
+        localStorage.setItem("scoutId", vlairiables["scoutName"]);
         generateName();
     }
 
@@ -95,7 +98,8 @@ function SaveBut() {
         if (scoutName !== undefined) {
             const fullName = `Welcome ${scoutName}`;
             setName(fullName);
-            localStorage.setItem("scoutName", fullName); // Save to localStorage
+            setScoutIdSave(scoutId);
+            localStorage.setItem("scoutName", fullName);
         } else {
             setName("ERROR! Wrong or invalid Scouting ID inputted");
         }
@@ -109,6 +113,7 @@ function SaveBut() {
         <div>
             <button className="homeButton" onClick={saveID}>Save Scouting ID</button>
             <p>{name}</p>
+            <p>{scoutIdSave}</p>
         </div>
     );
 }

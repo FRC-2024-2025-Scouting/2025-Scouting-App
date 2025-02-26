@@ -47,6 +47,11 @@ export const initialVlairiables = {
     scoutName: "",    
 };
 
+let scoutIdSaved = localStorage.getItem("scoutId")
+if (initialVlairiables.scoutName != scoutIdSaved) {
+    initialVlairiables.scoutName = scoutIdSaved;
+}
+
 export const initHumanVlariables = {
     HMNteamNum: "",  //2^14
     HMNmatchNum: "", //2^7
