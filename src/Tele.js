@@ -60,11 +60,7 @@ function Score() {
         <div class="column">
 
             <Tally
-                vlair="TL1S"
-                clors="green"
-            />
-            <Tally
-                vlair="TL2S"
+                vlair="TL4S"
                 clors="green"
             />
             <Tally
@@ -72,7 +68,11 @@ function Score() {
                 clors="green"
             />
             <Tally
-                vlair="TL4S"
+                vlair="TL2S"
+                clors="green"
+            />
+            <Tally
+                vlair="TL1S"
                 clors="green"
             />
         </div>
@@ -83,10 +83,10 @@ function Score() {
 function Label() {
     return (
         <div class="column">
-            <div class="spacer2">l1</div>
-            <div class="spacer2">l2</div>
-            <div class="spacer2">l3</div>
             <div class="spacer2">l4</div>
+            <div class="spacer2">l3</div>
+            <div class="spacer2">l2</div>
+            <div class="spacer2">l1</div>
         </div>
     );
 }
@@ -96,11 +96,7 @@ function Miss() {
     return (
         <div class="column">
             <Tally
-                vlair="TL1M"
-                clors="red"
-            />
-            <Tally
-                vlair="TL2M"
+                vlair="TL4M"
                 clors="red"
             />
             <Tally
@@ -108,7 +104,11 @@ function Miss() {
                 clors="red"
             />
             <Tally
-                vlair="TL4M"
+                vlair="TL2M"
+                clors="red"
+            />
+            <Tally
+                vlair="TL1M"
                 clors="red"
             />
         </div>

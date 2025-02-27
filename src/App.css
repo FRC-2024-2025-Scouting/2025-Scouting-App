@@ -17,6 +17,14 @@ html, body {
     align-items: center;
 }
 
+.prettyPicture{
+
+}
+
+.rotate{
+
+}
+
 /*Text Boxes*/
 input[type=text] {
     margin-top: 20px;
