@@ -1,4 +1,4 @@
-import { StartScoutBut, QRBut, HumanBut, SettingsBut } from "./App.js";
+import { StartScoutBut, QRBut, SettingsBut } from "./App.js";
 
 //All the buttons are imports from app.js
 export function HomePage() {
@@ -10,7 +10,6 @@ export function HomePage() {
       </div>
         <StartScoutBut/>
         <QRBut/>
-        <HumanBut/>
         <SettingsBut/>
       </div>
   </body>

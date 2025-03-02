@@ -10,17 +10,14 @@ import { AutoPage } from './Auto.js';
 import { TelePage } from './Tele.js';
 import { EndPage } from './End.js';
 import { PostPage } from './Post.js';
-import { HumanPage } from './Human.js';
 import { QRPage } from './QR.js';
 import { QrGen } from './QRGen.js';
-import { HumanQrGen } from './HumanQrPage.js';
 import { SettingsPage } from "./SettingsPage.js";
 import { vlairiables, resetVlairiables } from './Functions.js';
 import { resetBarcode } from './QRGen.js';
 import { encodeVariables } from './bitPacking.js';
 //Variables for page navigation purposes
-let human = false;
-let routes = ["/", "/Pre", "/Auto", "/Tele", "/End", "/Post", "/Human", "/QR", "/QrGen", "/HumanQrGen"];
+let routes = ["/", "/Pre", "/Auto", "/Tele", "/End", "/Post", "/QR", "/QrGen"];
 {/*
 
  */}
@@ -30,7 +27,7 @@ export default function MyApp() {
   return(
     <body>
       <div class="screen">
-        <div class="VersionNumber">Version Alpha 6.26</div>
+        <div class="VersionNumber">Version Alpha 7.44</div>
         <BrowserRouter>
           <Routes>
             <Route exact path="/" element={<HomePage/>} />
@@ -39,10 +36,8 @@ export default function MyApp() {
             <Route path="/Tele" element={<TelePage/>} />
             <Route path="/End" element={<EndPage/>} />
             <Route path="/Post" element={<PostPage/>} />
-            <Route path="/Human" element={<HumanPage/>} />
             <Route path="/QR" element={<QRPage/>} />
             <Route path="/QrGen" element={<QrGen/>} />
-            <Route path="/HumanQrGen" element={<HumanQrGen/>}/>
             <Route path="/Settings" element={<SettingsPage/>}/>
           </Routes>
         </BrowserRouter>
@@ -93,26 +88,13 @@ export function QRBut() {
   );
 }
 
-//Button to navigate to the human scouting page
-export function  HumanBut() {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    human = true;
-    navigate('/Human')
-  };
-
-  return (
-    <button className="homeButton" onClick={handleClick}>
-      Human Scouting
-    </button>
-  );
-}
-
 {/*Multi page Buttons*/}
 export function NavButN({next}) {
   const navigate = useNavigate()
   const nextPage = () => {
+    if (next == 7) {
+      resetBarcode(encodeVariables(vlairiables))
+    }
     console.log(vlairiables);
     const go = routes[next] //Prop dictated when button is called to decide which page to go to next
     navigate(go)
@@ -129,14 +111,8 @@ export function NavButN({next}) {
 export function NavButB({last}) {
   const navigate = useNavigate()
   const lastPage = () => {
-    if (human){
-      navigate("/")
-      human = false;
-    } else {
-      console.log(vlairiables);
-      const go = routes[last] //Prop dictated when button is called to decide which page to go back to
+      const go = routes[last]
       navigate(go)  
-    }
   }
 
   return(
@@ -151,7 +127,6 @@ export function HomePageBut() {
   const navigate = useNavigate()
   const homePage = () => {
     console.log(vlairiables);
-    human = false;
     navigate('/')
     resetVlairiables();
     resetBarcode(encodeVariables(vlairiables))
@@ -168,21 +143,7 @@ export function HomePageBut() {
 export function FinishBut() {
   const navigate = useNavigate()
   const finishPage = () => {
-    human = false;
     navigate('/QrGen')
-  }
-  return(
-    <button class="homeButton" onClick={finishPage}>
-      Finish Scouting
-    </button>
-  );
-}
-
-export function HumanQrBut() {
-  const navigate = useNavigate()
-  const finishPage = () => {
-    human = false;
-    navigate('/HumanQrGen')
   }
   return(
     <button class="homeButton" onClick={finishPage}>

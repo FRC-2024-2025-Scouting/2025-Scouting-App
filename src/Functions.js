@@ -52,19 +52,8 @@ if (initialVlairiables.scoutName != scoutIdSaved) {
     initialVlairiables.scoutName = scoutIdSaved;
 }
 
-export const initHumanVlariables = {
-    HMNteamNum: "",  //2^14
-    HMNmatchNum: "", //2^7
-    HMNColor: false, //max of 2^1
-    HMNS: 0,  //max of 2^4 
-    HMNM: 0,  //max of 2^4
-
-    HMNscoutName: "",
-}
-
 //creates a copy to hold base variables for reseting purposes
 export const vlairiables = { ...initialVlairiables };
-export const humanVlairiables = { ...initHumanVlariables };
 
 //Element containing a + and - button that change the value of vlair
 export function Tally({ vlair, clors }) {
@@ -99,46 +88,6 @@ export function Tally({ vlair, clors }) {
     } else if (clors == "green") {
         butStyle += " green"
     } 
-    return (
-        //Display
-        <div className="row">
-            <button class={butStyle} onClick={deincrement}> - </button>
-            <div className="autoCounter">{count}</div>
-            <button class={butStyle} onClick={increment}> + </button>
-        </div>
-    );
-};
-
-export function HumanTally({ vlair, clors }) {
-    //Create the count variable to update the dictated vlair
-    const [count, setCount] = useState(Number(humanVlairiables[vlair])); 
-    //Vlair (pronounced Vfl-air) a apitimation of var because i couldnt use var for the prop name
-
-    //Function to increment the count
-    const increment = () => {
-        const newCount = count + 1;  //define and add to newCount
-        setCount(newCount);
-        humanVlairiables[vlair] = newCount; //set the dictated vlair to what the new count is
-        console.log(humanVlairiables); //Testing
-    };
-
-    //Function to deincrement the count
-    const deincrement = () => {
-        if (count > 0) { //Only call if count is greater than 0 to prevent negative numbers
-            const newCount = count - 1; //define and subtract to newCount
-            setCount(newCount);
-            humanVlairiables[vlair] = newCount; //set the dictated vlair to what the new count is
-            console.log(humanVlairiables);//Testing
-        }
-    };
-    let butStyle = "autoButton"
-    if (clors == "red") {
-        butStyle += " red"
-    } else if (clors == "blue") {
-        butStyle += " blue"
-    } else if (clors == "yellow") {
-        butStyle += " yellow"
-    }
     return (
         //Display
         <div className="row">
@@ -287,37 +236,10 @@ export function TextBox({ vlair, tooltip }) {
     );
 };
 
-export function HumanTextBox({ vlair, tooltip }) {
-    //similar to the checkbox and tally except for a string
-    const [text, setText] = useState(humanVlairiables[vlair] || ''); 
-
-    //called whenever text is imputed to update the var to the dictated change
-    const handleChange = (event) => {
-        const newText = event.target.value;//applys the changes to the new text var
-        setText(newText);
-        humanVlairiables[vlair] = newText;//set the var to the new text
-    };
-
-    //display
-    return (
-        <div className="row">
-            <input
-                type="text"
-                placeholder={tooltip}
-                className="autoInput"
-                value={text}
-                onChange={handleChange}//calls whenever text input
-            />
-        </div>
-    );
-};
-
 //function to reset the variables element when restarting scouting - mostly for other scripts
 export function resetVlairiables ()  {
     Object.assign(vlairiables, { ...initialVlairiables }); //sets the current used variables to the copy made at the start
     console.log('Vlairiables have been reset:', vlairiables);
-    Object.assign(humanVlairiables, { ...initHumanVlariables }); //sets the current used variables to the copy made at the start
-    console.log('Human Vlairiables have been reset:', humanVlairiables);
 };
   
 

@@ -161,27 +161,3 @@ export function decodeVariables(byteArray) {
 
   return variables;
 }
-
-export function encodeHumanVariables(variables) {
-  const byteArray = new Uint8Array(17);
-
-  variables.HMNteamNum = Math.min(variables.HMNteamNum, 0b11111111111111);
-  byteArray[0] = variables.HMNteamNum & 0b11111111;  
-  byteArray[1] = ((variables.HMNteamNum >> 8) & 0b111111);  
-
-  variables.HMNmatchNum = Math.min(variables.HMNmatchNum, 0b1111111);
-  byteArray[2] = variables.HMNmatchNum & 0b1111111;
-  variables.HMNColor = Math.min(variables.HMNColor, 0b1);
-  byteArray[2] += variables.HMNColor & 0b1;
-
-  variables.HMNS = Math.min(variables.HMNS, 0b1111);
-  byteArray[3] = variables.HMNS & 0b1111;
-  variables.HMNM = Math.min(variables.HMNM, 0b1111)
-  byteArray[3] += variables.HMNM & 0b1111;
-
-  return byteArray;
-}
-
-export function decodeHumanVariables(byteArray) {
-
-}
