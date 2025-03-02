@@ -16,6 +16,8 @@ import { QrGen } from './QRGen.js';
 import { HumanQrGen } from './HumanQrPage.js';
 import { SettingsPage } from "./SettingsPage.js";
 import { vlairiables, resetVlairiables } from './Functions.js';
+import { resetBarcode } from './QRGen.js';
+import { encodeVariables } from './bitPacking.js';
 //Variables for page navigation purposes
 let human = false;
 let routes = ["/", "/Pre", "/Auto", "/Tele", "/End", "/Post", "/Human", "/QR", "/QrGen", "/HumanQrGen"];
@@ -152,6 +154,7 @@ export function HomePageBut() {
     human = false;
     navigate('/')
     resetVlairiables();
+    resetBarcode(encodeVariables(vlairiables))
   }
 
   return(

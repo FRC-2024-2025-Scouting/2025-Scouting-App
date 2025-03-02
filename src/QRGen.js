@@ -7,7 +7,12 @@ import { useState, useEffect } from "react";
 import { json } from "react-router-dom";
 
 let barcodeOutput = ""
+let displayValue = false;
 
+export function resetBarcode (what) {
+    barcodeOutput = what;
+    displayValue = false;
+}
 
 export function QrGen() {
     const [qrCodeData, setQrCodeData] = useState(""); // State to store the QR code data
@@ -22,6 +27,7 @@ export function QrGen() {
         const textnode = document.createTextNode(JSON.stringify(decodeVariables(barcodeOutput)));
         node.appendChild(textnode);
         document.getElementById("specialArea").appendChild(node);
+        displayValue = true;
     };
 
     //resets the variables in its own instance
@@ -34,12 +40,12 @@ export function QrGen() {
     return (
         <div className="screen">
             <div class="head">QR GENERATION PAGE</div>
-            <Barcode value={barcodeOutput}
-            displayValue={true}
+            {displayValue && <Barcode value={barcodeOutput}
+            displayValue={true} 
             width={1.2}
             height={50}
             //format={"EAN13"}
-            />
+            />}
             <div id="qrCode">
                 {qrCodeData && (
                     <div>

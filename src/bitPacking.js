@@ -1,5 +1,3 @@
-import { replace } from "react-router-dom";
-
 export function encodeVariables (variables) {
   const byteArray = new Uint8Array(17);
   variables.teamNum = Math.min(variables.teamNum, 0b11111111111111);
