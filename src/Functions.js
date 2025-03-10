@@ -161,10 +161,12 @@ export function CardBox({ vlair }) {
     const updateVlare = () => {
         //function basicaly assings a numerical value to represent nither checked, 1 checked, or 2 checked
         let newCount = 0;
-        if (checked1 && checked2) {
+        if (checked1 && checked2 || checked2) {
             newCount = 2;
-        } else if (checked1 || checked2) {
+        } else if (checked1) {
             newCount = 1;
+        } else{
+            newCount = 0;
         }
         setCount(newCount);
         vlairiables[vlair] = newCount; //sets the value to the dictated var
