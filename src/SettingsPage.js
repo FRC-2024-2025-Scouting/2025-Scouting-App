@@ -107,7 +107,7 @@ function SaveBut() {
 
     useEffect(() => {
         console.log("Name updated to: " + name);
-    }, [name]);
+    }, [name],);
 
     return (
         <div>

@@ -11,7 +11,7 @@ import { TelePage } from './Tele.js';
 import { EndPage } from './End.js';
 import { PostPage } from './Post.js';
 import { QRPage } from './QR.js';
-import { QrGen } from './QRGen.js';
+import { QrGen, resetGen } from './QRGen.js';
 import { SettingsPage } from "./SettingsPage.js";
 import { vlairiables, resetVlairiables } from './Functions.js';
 import { resetBarcode } from './QRGen.js';
@@ -21,13 +21,13 @@ let routes = ["/", "/Pre", "/Auto", "/Tele", "/End", "/Post", "/QR", "/QrGen"];
 {/*
 
  */}
- //these quotes above crash my pc if they arent included 
+//these quotes above crash my pc if they arent included 
 //Main app page with all the pages routed in
 export default function MyApp() {
   return(
     <body>
       <div class="screen">
-        <div class="VersionNumber">Version Alpha 7.44</div>
+        <div class="VersionNumber">Version Alpha 8.84</div>
         <BrowserRouter>
           <Routes>
             <Route exact path="/" element={<HomePage/>} />
@@ -113,6 +113,7 @@ export function NavButB({last}) {
   const lastPage = () => {
       const go = routes[last]
       navigate(go)  
+      resetGen();
   }
 
   return(
@@ -130,6 +131,7 @@ export function HomePageBut() {
     navigate('/')
     resetVlairiables();
     resetBarcode(encodeVariables(vlairiables))
+    resetGen();
   }
 
   return(

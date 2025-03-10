@@ -1,13 +1,17 @@
-import { vlairiables, convertToCsv, initialVlairiables } from "./Functions"
+import { vlairiables, convertToCsv } from "./Functions"
 import { HomePageBut, NavButB } from "./App";
 import { QRCodeSVG } from 'qrcode.react';
 import Barcode from 'react-barcode';
-import { encodeVariables, decodeVariables } from './bitPacking';
-import { useState, useEffect } from "react";
-import { json } from "react-router-dom";
+import { encodeVariables } from './bitPacking';
+import { useState} from "react";
 
 let barcodeOutput = ""
 let displayValue = false;
+let genned = false;
+
+export function resetGen() {
+    genned = false;
+}
 
 export function resetBarcode(what) {
     barcodeOutput = what;
@@ -19,14 +23,13 @@ export function QrGen() {
 
     //function to generate the qr code with data
     const printVar = () => {
-        const csvContent = convertToCsv(vlairiables);
-        setQrCodeData(csvContent); // Set QR code data
-        barcodeOutput = encodeVariables(vlairiables);
-        const node = document.createElement("p");
-        const textnode = document.createTextNode(JSON.stringify(decodeVariables(barcodeOutput)));
-        node.appendChild(textnode);
-        document.getElementById("specialArea").appendChild(node);
-        displayValue = true;
+        if (!genned) {
+            genned = true;
+            const csvContent = convertToCsv(vlairiables);
+            setQrCodeData(csvContent); // Set QR code data
+            barcodeOutput = encodeVariables(vlairiables);
+            displayValue = true;
+        }
     };
 
     //display
@@ -50,11 +53,10 @@ export function QrGen() {
                 Generate QR
             </button>
             <div class="navButText">
-                <NavButB last={5} />
+                <NavButB last={5}/>
                 PostGame
             </div>
             <HomePageBut />
-            <div id="specialArea"></div>
         </div>
     );
 }
