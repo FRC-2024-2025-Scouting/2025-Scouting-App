@@ -8,6 +8,10 @@ export function TelePage() {
     return (
         <div class="screen">
             <div class="head">TELE PAGE</div>
+            <div class="head">Algae Remove</div>
+            <Tally
+                vlair='ART'
+            />
             <Coral />
             <Processor />
             <Net />

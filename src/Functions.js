@@ -44,7 +44,10 @@ export const initialVlairiables = {
     DCF: 0,        
     Cards: 0,      
     Fouls: 0,      
-    scoutName: "",    
+    scoutName: "",   
+    ARA: 0,
+    ART: 0, 
+    NoShow: false,
 };
 
 let scoutIdSaved = localStorage.getItem("scoutId")
@@ -132,13 +135,14 @@ export function TeamBox({ vlair }) {
 
     //display
     return (
-        <div>
+        <div class="row">
             <input
                 type="checkbox"
                 id="red"
                 onChange={toggleCheckbox}
                 checked={checked}//starts unchecked
             />
+            <div class="checkboxSpacer"/>
             <input
                 type="checkbox"
                 id="blue"
@@ -213,7 +217,7 @@ export function CardBox({ vlair }) {
 }
 
 //Element for the text box
-export function TextBox({ vlair, tooltip }) {
+export function TextBox({ vlair, tooltip, type }) {
     //similar to the checkbox and tally except for a string
     const [text, setText] = useState(vlairiables[vlair] || ''); 
 

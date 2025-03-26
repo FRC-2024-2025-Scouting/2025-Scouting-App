@@ -16,7 +16,7 @@ export function EndPage() {
             <div class="head">Ally Cage Hit</div>
             <Checkbox
                 vlair="ALCGHIT"
-                style="red"
+                style="blue"
             />
             <div class="row">
 

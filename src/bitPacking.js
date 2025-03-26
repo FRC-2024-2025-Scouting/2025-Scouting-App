@@ -1,5 +1,5 @@
 export function encodeVariables (variables) {
-  const byteArray = new Uint8Array(17);
+  const byteArray = new Uint8Array(19);
   variables.teamNum = Math.min(variables.teamNum, 0b11111111111111);
   byteArray[0] = variables.teamNum & 0b11111111;  
   byteArray[1] = ((variables.teamNum >> 8) & 0b111111);  
@@ -92,10 +92,20 @@ export function encodeVariables (variables) {
 
   variables.Fouls = Math.min(variables.Fouls, 0b111111);
   byteArray[16] = variables.Fouls & 0b111111;
+
   variables.OPCGHIT = Math.min(variables.OPCGHIT, 0b1);
-  byteArray[16] += (variables.OPCGHIT & 0b1) << 6;
+  byteArray[17] = (variables.OPCGHIT & 0b1);
   variables.ALCGHIT = Math.min(variables.ALCGHIT, 0b1);
-  byteArray[16] += (variables.ALCGHIT & 0b1) << 7;
+  byteArray[17] += (variables.ALCGHIT & 0b1) << 1;
+  variables.ARA = Math.min(variables.ARA, 0b111)
+  byteArray[17] += (variables.ARA & 0b1) << 2;
+  variables.ART = Math.min(variables.ART, 0b111)
+  byteArray[17] += (variables.ART & 0b1) << 5;
+
+  variables.NoShow = Math.min(variables.NoShow, 0b1);
+  byteArray[18] = (variables.NoShow & 0b1);
+
+
 
   console.log(byteArray)
   let data = btoa(String.fromCharCode.apply(null, byteArray));
@@ -149,7 +159,7 @@ export function decodeVariables(byteArray) {
 
   variables.TPS = byteArray[13] & 0b1111;
   variables.TPM = (byteArray[13] >> 4) & 0b1111;
-
+ 
   variables.TNS = byteArray[14] & 0b1111;
   variables.TNM = (byteArray[14] >> 4) & 0b1111;
 
@@ -157,7 +167,7 @@ export function decodeVariables(byteArray) {
   variables.moved = (byteArray[15] >> 6) & 0b1;
   variables.PRK = (byteArray[15] >> 7) & 0b1;
 
-  variables.Fouls = byteArray[16] & 0b1111;
+  variables.Fouls = byteArray[16] & 0b11111111;
 
   return variables;
 }

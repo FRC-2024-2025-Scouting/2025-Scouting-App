@@ -12,6 +12,10 @@ export function AutoPage() {
                 vlair="moved"
                 style="gray"
             />
+            <div class="head">Algae Remove</div>
+            <Tally
+                vlair='ARA'
+            />
             <Coral />
             <Processor />
             <Net />

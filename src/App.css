@@ -3,6 +3,7 @@ html, body {
     margin: 0;
     justify-content: center;
     color: black;
+    background-color: white;
 }
 
 .VersionNumber {
@@ -74,8 +75,12 @@ input[type=text]:focus {
 }
 
 /*Checkbox box*/
+
+.checkboxSpacer{
+    margin: 10px
+}
+
 input[type="checkbox"]#red {
-        margin-right: 15px;
         width: 40px;
         height: 40px;
         appearance: none;
@@ -89,7 +94,6 @@ input[type="checkbox"]#red:checked{
 }
 
 input[type="checkbox"]#blue {
-    margin-left: 15px;
     width: 40px;
     height: 40px;
     appearance: none;

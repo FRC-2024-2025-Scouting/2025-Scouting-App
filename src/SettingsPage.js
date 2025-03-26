@@ -2,7 +2,7 @@ import { HomePageBut } from "./App";
 import { TextBox } from "./Functions";
 import { vlairiables } from "./Functions";
 import { useState, useEffect } from "react";
-import { initialVlairiables } from "./Functions";
+import { initialVlairiables, Checkbox } from "./Functions";
 
 const people = {
     "0": "Mentour or Teacher",
