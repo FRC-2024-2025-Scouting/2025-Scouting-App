@@ -90,17 +90,17 @@ export function encodeVariables (variables) {
   variables.PRK = Math.min(variables.PRK, 0b1);
   byteArray[15] += (variables.PRK & 0b1) << 7;
 
-  variables.Fouls = Math.min(variables.Fouls, 0b111111);
-  byteArray[16] = variables.Fouls & 0b111111;
+  variables.Fouls = Math.min(variables.Fouls, 0b11111111);
+  byteArray[16] = variables.Fouls & 0b11111111;
 
   variables.OPCGHIT = Math.min(variables.OPCGHIT, 0b1);
   byteArray[17] = (variables.OPCGHIT & 0b1);
   variables.ALCGHIT = Math.min(variables.ALCGHIT, 0b1);
   byteArray[17] += (variables.ALCGHIT & 0b1) << 1;
   variables.ARA = Math.min(variables.ARA, 0b111)
-  byteArray[17] += (variables.ARA & 0b1) << 2;
+  byteArray[17] += (variables.ARA & 0b111) << 2;
   variables.ART = Math.min(variables.ART, 0b111)
-  byteArray[17] += (variables.ART & 0b1) << 5;
+  byteArray[17] += (variables.ART & 0b111) << 5;
 
   variables.NoShow = Math.min(variables.NoShow, 0b1);
   byteArray[18] = (variables.NoShow & 0b1);

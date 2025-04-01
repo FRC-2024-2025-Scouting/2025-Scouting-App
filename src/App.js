@@ -27,7 +27,7 @@ export default function MyApp() {
   return(
     <body>
       <div class="screen">
-        <div class="VersionNumber">Version Alpha 8.84</div>
+        <div class="VersionNumber">Version Alpha 9.75</div>
         <BrowserRouter>
           <Routes>
             <Route exact path="/" element={<HomePage/>} />
@@ -46,8 +46,8 @@ export default function MyApp() {
   );
 }
 
-{/*Buttons for page navigation */}
-{/*Home Page Navigation Buttons*/}
+/*Buttons for page navigation */
+/*Home Page Navigation Buttons*/
 export function StartScoutBut() {
   const navigate = useNavigate(); 
   const handleClick = () => {
@@ -88,7 +88,7 @@ export function QRBut() {
   );
 }
 
-{/*Multi page Buttons*/}
+/*Multi page Buttons*/
 export function NavButN({next}) {
   const navigate = useNavigate()
   const nextPage = () => {
